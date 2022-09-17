@@ -1,19 +1,20 @@
 <template>
-  <div>
-      <cadresComponent/>
+  <div class="element">
+    
   </div>
 </template>
 
 <script>
-  import cadresComponent from "../components/cardes.vue";
-export default {
-  name:'details',
-  components:{
-    cadresComponent
+ 
+  export default {
+    name:'details',
   }
-}
 </script>
 
 <style scoped>
-
+  .element{
+        width: 100px;
+        background-color: blueviolet;
+    }
+    
 </style>
