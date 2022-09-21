@@ -51,18 +51,18 @@
                 </form>
             </div>
         </div>
-        <div class="footer">
-
-        </div>
+        <footerComponent/>
     </div>
 </template>
 
 <script>
 import navbarComponent from "../components/navbar.vue";
+import footerComponent from '../components/footer.vue'
 export default {
     name:'contact',
     components:{
-        navbarComponent
+        navbarComponent,
+        footerComponent
     }
    
 }

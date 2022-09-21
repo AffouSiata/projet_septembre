@@ -6,6 +6,8 @@ import about from '../views/about.vue'
 import contact from '../views/contact.vue'
 import details from '../views/details.vue'
 import admin from '../views/admin.vue'
+import achat from '../views/achat.vue'
+import location from '../views/location.vue'
 const routes = [
   {
     path: '/admin',
@@ -39,9 +41,20 @@ const routes = [
     component: contact
   },
   {
-    path: '/details',
+    path: '/achat',
+    name: 'achat',
+    component: achat
+  },
+  {
+    path: '/location/',
+    name: 'location',
+    component: location,
+  },
+  {
+    path: '/details/:id',
     name: 'details',
-    component: details
+    component: details,
+    props:true
   },
   
   

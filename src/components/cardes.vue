@@ -80,20 +80,20 @@
 export default {
     name:"cadresComponent",data(){
         return{
-            donnes:[
-                {
-                    id:1,
-                    images:'../assets/maison1.jpg',
-                    vente:'For Rent',
-                    location:'For Sale',
-                    price:2000,
-                    nom:'Centennial Drive',
-                    description:'Taking transformation mapping and above all, create synergy....',
-                    bed: 4,
-                    bath: 4,
-                    th: 2750
-                }
-            ]
+            // donnes:[
+            //     {
+            //         id:1,
+            //         images:'../assets/maison1.jpg',
+            //         vente:'For Rent',
+            //         location:'For Sale',
+            //         price:2000,
+            //         nom:'Centennial Drive',
+            //         description:'Taking transformation mapping and above all, create synergy....',
+            //         bed: 4,
+            //         bath: 4,
+            //         th: 2750
+            //     }
+            // ]
 
         }
     }

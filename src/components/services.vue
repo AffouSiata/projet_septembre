@@ -7,14 +7,14 @@
                     <div class="service1">
                         <img src="../assets/bac3.jpg" alt="">
                             <div class="info">
-                                <a href="">Achat</a>
+                                <a href="/achat">Achat</a>
                             </div>
                     </div>
                     <div class="service1">
                         <div class="achat">
                             <img src="../assets/bac3.jpg" alt="">
                             <div class="info">
-                                <a href="">Location</a>
+                                <a href="/location">Location</a>
                             </div>
                         </div>
                     </div>

@@ -17,13 +17,18 @@
                                 <option value="For Rent">For Rent</option>
                                 <option value="For Sale">For Sale</option>
                             </select>
-                            <input type="file" @change="uploadImage">
-                            <input type="text" placeholder="Nom" v-model="nom">
+                            <input type="file" @change="uploadImage" multiple>
+                            <input type="text" placeholder="Nom  du bien" v-model="nom">
                             <input type="number" placeholder="Price" v-model="prix">
+                            <input type="text" placeholder="Type de bien" v-model="type">
+                            <input type="text" placeholder="Pays" v-model="pays">
+                            <input type="text" placeholder="Ville" v-model="ville">
+                            <input type="text" placeholder="Adresse" v-model="adresse">
                             <div class="forme">
                                 <input type="number" placeholder="Bed" v-model="chambre">
                                 <input type="number" placeholder="Bath" v-model="bain">
-                                <input type="text" placeholder="SF" v-model="sf">
+                                <input type="number" placeholder="Superficie" v-model="superficie">
+
                             </div>
                         </div>
                         <div class="forme">
@@ -36,7 +41,7 @@
 
                 </div>
                 <h1>LISTE DES MAISONS POSTÉ</h1>
-                <table class="table">
+                <!-- <table class="table">
                     
                     <thead class="table-dark">
                         <tr>
@@ -64,7 +69,7 @@
                             <td rowspan="2" style="color:red">Modifier</td>
                         </tr>
                     </tbody>
-                </table>         
+                </table>          -->
             </div>
 
         </div>
@@ -73,21 +78,27 @@
 
 <script>
 
-import {homeColRef} from '../firebase' 
-import {addDoc,getDocs, doc} from "firebase/firestore"
+import {homeColRef,storage} from '../firebase' 
+
+import {addDoc} from "firebase/firestore"
+import {ref, uploadBytesResumable, getDownloadURL, uploadBytes } from "firebase/storage";
 
 export default {
     name:"admin",
     data(){
         return{
-            Immo:[],
             cate:'',
             nom:'',
             prix:'',
             chambre:'',
+            pays:'',
+            ville:'',
+            adresse:'',
             bain:'',
-            sf:'',
+            superficie:'',
             message:'',
+            image:'',
+            type:''
         }
     },
     methods:{
@@ -111,11 +122,17 @@ export default {
                 nom:this.nom,
                 prix:this.prix,
                 chambre:this.chambre,
+                pays:this.pays,
                 bain:this.bain,
-                sf:this.sf,
-                message:this.message
+                ville:this.ville,
+                adresse:this.adresse,
+                superficie:this.superficie,
+                message:this.message,
+                images:this.image,
+                type:this.type
                
             }
+
             console.log('element',element);
             addDoc(homeColRef,element).then((adm)=>{
                 console.log("res",adm);
@@ -126,8 +143,59 @@ export default {
                 console.log("vous avez mal renseignez vos données");
             })
         },
+        // uploadImage(e){
+        //     console.log("eeeeee",e);
+        //     let file = e.target.files[0]
+        //     console.log("images",file.name);
 
-        
+        //     const storageRef = ref(storage, file.name);
+        //     const uploadTask = uploadBytesResumable(storageRef, file);
+        //     uploadTask.on('state_changed', 
+        //     (snapshot) => {
+        //         const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        //         console.log('Upload is ' + progress + '% done');
+        //         switch (snapshot.state) {
+        //         case 'paused':
+        //             console.log('Upload is paused');
+        //             break;
+        //         case 'running':
+        //             console.log('Upload is running');
+        //             break;
+        //         }
+        //         }, 
+        //         (error) => {
+        //             console.log("erereree",error);
+        //         }, 
+        //         () => {
+        //             getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+        //             console.log('File available at', downloadURL);
+        //             this.image =downloadURL
+        //             });
+        //         }
+        //         );   
+        // }
+         async uploadImage(e){
+        //     let file = e.target.files[0]
+        //    console.log("images",file.name);
+           let touslesimages =[];
+           Object.values(e.target.files).forEach((elem)=>{
+            console.log("images",elem.name);
+            const file = elem
+            const metadata ={
+                contentType:"image/jpeg"
+            }
+            const storageRef = ref(storage,"mesImages/" + file.name)
+            touslesimages.push(uploadBytes(storageRef, file , metadata)
+            .then(uploadResult =>{
+                return getDownloadURL(uploadResult.ref)
+            })
+            )
+           })
+           const images = await Promise.all(touslesimages)
+           this.image =images
+           console.log("azertyuiolkjhgfds",this.image);
+
+        }   
     }
 
 
@@ -186,19 +254,19 @@ export default {
     .modalite{
         display: none;
         position: absolute;
-        top: 50%;
+        top: 55%;
         left: 50%;
         transform: translate(-50%,-50%);
         padding: 20px;
         background-color: #fff;
-        height: 720px;
+        height: 920px;
         width: 600px;
         border-radius: 10px;
         z-index: 10; 
       
     }
     form{
-        height: 550px;
+        height: 650px;
         margin: 5px auto;
         text-align: center;
 
@@ -237,7 +305,7 @@ export default {
   
     .forme textarea{
         width: 580px;
-        height: 200px;
+        height: 150px;
         padding: 10px;
         margin: 10px;
         border-radius: 10px; 

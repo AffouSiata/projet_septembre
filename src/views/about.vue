@@ -179,9 +179,7 @@
           
           
         </div> 
-        <div class="footer">
-
-        </div> 
+        <footerComponent/>
 
        
            
@@ -190,10 +188,12 @@
 
 <script>
 import navbarComponent from "../components/navbar.vue";
+import footerComponent from '../components/footer.vue'
 export default {
     name:'home',
     components:{
-        navbarComponent
+        navbarComponent,
+        footerComponent
     }
 }
 </script>

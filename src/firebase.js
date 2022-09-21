@@ -1,10 +1,13 @@
 
 import { initializeApp } from "firebase/app";
 import {getFirestore,collection}  from "firebase/firestore";
+import {getStorage} from "firebase/storage"
+import  "firebase/storage"
 
 const firebaseConfig = {
   apiKey: "AIzaSyBIAC3sH87PkQwa2UuEXciAkLeFLJJ044I",
   authDomain: "projet-septembre.firebaseapp.com",
+  databaseURL:"gs://projet-septembre.appspot.com",
   projectId: "projet-septembre",
   storageBucket: "projet-septembre.appspot.com",
   messagingSenderId: "75183252692",
@@ -14,4 +17,5 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 export const homeColRef = collection(db, "Immo");
+export const storage = getStorage(app)
 export default homeColRef;

@@ -9,7 +9,6 @@
                     <li><a href="/">Home</a></li>
                     <li><a href="/about">About</a></li>
                     <li><a href="/services">Services</a></li>
-                    <li><a href="/details">Details</a></li>
                     <li><a href="/contact">Contact</a></li>
                 </ul>
             </nav>
@@ -33,7 +32,6 @@ export default {
             window.addEventListener("load", ()=>{
                 const scrolle = document.querySelector('.contener');
                 window.addEventListener('scroll', () => {
-                    console.log("azerty");
                     if (window.scrollY >= 50) {
                         scrolle.classList.add('contener_active');
                     } else {
@@ -46,7 +44,6 @@ export default {
                 const burger = document.querySelector('.burger')
                 const Navmenu = document.querySelector('.nav-menu')
                 burger.addEventListener('click',() =>{
-                    console.log('ertyuj');
                     burger.classList.toggle("burger-active")
                     Navmenu.classList.toggle("nav-active")
               })
