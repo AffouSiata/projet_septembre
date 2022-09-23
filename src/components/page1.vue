@@ -3,7 +3,7 @@
             <h1>Propriétés les plus récentes</h1>
             <div class="contenu">
                 <div class="element">
-                    <div class="villa" v-for="doc in Immo" :key="doc.id">
+                    <!-- <div class="villa" v-for="doc in Immo" :key="doc.id">
                         <div class="villa1">
                                 <img :src="doc.images" alt="">
                                 <div class="col_rent">{{doc.cate}}</div> 
@@ -19,157 +19,140 @@
                                 
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     
                     <div class="villa">
                         <div class="villa1" style="position:relative">
-                            <img src="../assets/maison1.jpg" alt="">
-                                <div class="col_sale">For Sale</div>
+                            <img src="../assets/appart1.jpg" alt="">
+                                <div class="col_sale">A Vendre</div>
                                 <div class="price">2000 USD</div>
                         </div>
                         <div class="villa2">
-                            <h2>Centennial Drive</h2>
-                            <p>Taking transformation mapping and above all, create synergy....</p>
+                            <h2>Appartement</h2>
+                            <p>Bel appartement à vendre dans la résidence hôtelière.</p>
                             <div class="villa21">
-                                <i class="fa fa-bed"><span> Bed:4 </span></i>
-                                <i class="fa fa-shower"><span> Bath: 6 </span></i>
-                                <i class="fa fa-th"><span> 2750 SF </span></i>            
+                                <i class="fa fa-bed"><span> Chambre:4 </span></i>
+                                <i class="fa fa-shower"><span>Salle de Bain: 4 </span></i>
+                                <i class="fa fa-th"><span> 2750 SP </span></i>            
                             </div>
                         </div>
                     </div>
                     <div class="villa">
                         <div class="villa1" style="position:relative">
-                            <img src="../assets/maison1.jpg" alt="">
-                                <div class="col_sale">For Sale</div>
-                                <div class="price">2000 USD</div>
+                            <img src="../assets/villa1.jpg" alt="">
+                                <div class="col_rent">A Louer</div>
+                                <div class="price">25000 USD</div>
                         </div>
                         <div class="villa2">
-                            <h2>Centennial Drive</h2>
-                            <p>Taking transformation mapping and above all, create synergy....</p>
+                            <h2>Villa</h2>
+                            <p>Cette belle villa de plain pied est situé plein ville:</p>
                             <div class="villa21">
-                                <i class="fa fa-bed"><span> Bed:4 </span></i>
-                                <i class="fa fa-shower"><span> Bath: 6 </span></i>
-                                <i class="fa fa-th"><span> 2750 SF </span></i>            
+                                <i class="fa fa-bed"><span> Chambre:4 </span></i>
+                                <i class="fa fa-shower"><span>Salle de Bain: 3 </span></i>
+                                <i class="fa fa-th"><span> 750 SP </span></i>            
                             </div>
                         </div>
                     </div>
                     <div class="villa">
                         <div class="villa1" style="position:relative">
-                            <img src="../assets/maison1.jpg" alt="">
-                                <div class="col_sale">For Sale</div>
-                                <div class="price">2000 USD</div>
+                            <img src="../assets/mai1.jpg" alt="">
+                                <div class="col_sale">A Vendre</div>
+                                <div class="price">4000 USD</div>
                         </div>
                         <div class="villa2">
-                            <h2>Centennial Drive</h2>
-                            <p>Taking transformation mapping and above all, create synergy....</p>
+                            <h2>Maison</h2>
+                            <p>MAison a La Motte Situé dans un environnement résidentiel, sécurisé avec piscine et parking privé.</p>
                             <div class="villa21">
-                                <i class="fa fa-bed"><span> Bed:4 </span></i>
-                                <i class="fa fa-shower"><span> Bath: 6 </span></i>
-                                <i class="fa fa-th"><span> 2750 SF </span></i>            
+                                <i class="fa fa-bed"><span> Chambre:3 </span></i>
+                                <i class="fa fa-shower"><span>Salle de Bain: 3 </span></i>
+                                <i class="fa fa-th"><span> 150 SP </span></i>            
                             </div>
                         </div>
                     </div>
                     <div class="villa">
                         <div class="villa1" style="position:relative">
-                            <img src="../assets/maison1.jpg" alt="">
-                                <div class="col_sale">For Sale</div>
-                                <div class="price">2000 USD</div>
+                            <img src="../assets/duplex1.jpg" alt="">
+                                <div class="col_rent">A Louer</div>
+                                <div class="price">6000 USD</div>
                         </div>
                         <div class="villa2">
-                            <h2>Centennial Drive</h2>
-                            <p>Taking transformation mapping and above all, create synergy....</p>
+                            <h2>Duplex</h2>
+                            <p>Belle opportunité : appartement duplex surface carrez 121 m²</p>
                             <div class="villa21">
-                                <i class="fa fa-bed"><span> Bed:4 </span></i>
-                                <i class="fa fa-shower"><span> Bath: 6 </span></i>
-                                <i class="fa fa-th"><span> 2750 SF </span></i>            
+                                <i class="fa fa-bed"><span> Chambre:4 </span></i>
+                                <i class="fa fa-shower"><span>Salle de Bain: 4 </span></i>
+                                <i class="fa fa-th"><span> 121 SP </span></i>            
                             </div>
                         </div>
                     </div>
                     <div class="villa">
                         <div class="villa1" style="position:relative">
-                            <img src="../assets/maison1.jpg" alt="">
-                                <div class="col_sale">For Sale</div>
-                                <div class="price">2000 USD</div>
+                            <img src="../assets/appart2.jpg" alt="">
+                                <div class="col_sale">A Vendre</div>
+                                <div class="price">1000 USD</div>
                         </div>
                         <div class="villa2">
-                            <h2>Centennial Drive</h2>
-                            <p>Taking transformation mapping and above all, create synergy....</p>
+                            <h2>Appartement</h2>
+                            <p>Villa contemporaine a vendre sur plan d'une surface de 159 m² avec piscine individuelle, Ouverte au sud avec une vue exceptionnelle</p>
                             <div class="villa21">
-                                <i class="fa fa-bed"><span> Bed:4 </span></i>
-                                <i class="fa fa-shower"><span> Bath: 6 </span></i>
-                                <i class="fa fa-th"><span> 2750 SF </span></i>            
+                                <i class="fa fa-bed"><span> Chambre:5 </span></i>
+                                <i class="fa fa-shower"><span>Salle de Bain: 5 </span></i>
+                                <i class="fa fa-th"><span> 159 SP </span></i>            
                             </div>
                         </div>
                     </div>
                     <div class="villa">
                         <div class="villa1" style="position:relative">
-                            <img src="../assets/maison1.jpg" alt="">
-                                <div class="col_sale">For Sale</div>
-                                <div class="price">2000 USD</div>
+                            <img src="../assets/duplex.jpg" alt="">
+                                <div class="col_rent">A Louer</div>
+                                <div class="price">3000 USD</div>
                         </div>
                         <div class="villa2">
-                            <h2>Centennial Drive</h2>
-                            <p>Taking transformation mapping and above all, create synergy....</p>
+                            <h2>Duplex</h2>
+                            <p>Une magnifique villa duplex de style moderne bâtie sur un terrain d’une surface de totale de 862m²</p>
                             <div class="villa21">
-                                <i class="fa fa-bed"><span> Bed:4 </span></i>
-                                <i class="fa fa-shower"><span> Bath: 6 </span></i>
-                                <i class="fa fa-th"><span> 2750 SF </span></i>            
+                                <i class="fa fa-bed"><span> Chambre:4 </span></i>
+                                <i class="fa fa-shower"><span>Salle de Bain: 3 </span></i>
+                                <i class="fa fa-th"><span> 862 SP </span></i>            
                             </div>
                         </div>
                     </div>
                     <div class="villa">
                         <div class="villa1" style="position:relative">
-                            <img src="../assets/maison1.jpg" alt="">
-                                <div class="col_sale">For Sale</div>
-                                <div class="price">2000 USD</div>
+                            <img src="../assets/villa2.jpg" alt="">
+                                <div class="col_sale">A Vendre</div>
+                                <div class="price">1200 USD</div>
                         </div>
                         <div class="villa2">
-                            <h2>Centennial Drive</h2>
-                            <p>Taking transformation mapping and above all, create synergy....</p>
+                            <h2>Maison</h2>
+                            <p>Cette splendide propriété, au calme et sans nuisances, vous enchantera par ses prestations de qualités.</p>
                             <div class="villa21">
-                                <i class="fa fa-bed"><span> Bed:4 </span></i>
-                                <i class="fa fa-shower"><span> Bath: 6 </span></i>
-                                <i class="fa fa-th"><span> 2750 SF </span></i>            
+                                <i class="fa fa-bed"><span> Chambre:3 </span></i>
+                                <i class="fa fa-shower"><span>Salle de Bain: 3 </span></i>
+                                <i class="fa fa-th"><span> 270 SP </span></i>            
                             </div>
                         </div>
                     </div>
                     <div class="villa">
                         <div class="villa1" style="position:relative">
-                            <img src="../assets/maison1.jpg" alt="">
-                                <div class="col_sale">For Sale</div>
-                                <div class="price">2000 USD</div>
+                            <img src="../assets/mai2.jpg" alt=""> 
+                                <div class="col_rent">A Louer</div>
+                                <div class="price">1800 USD</div>
                         </div>
                         <div class="villa2">
-                            <h2>Centennial Drive</h2>
-                            <p>Taking transformation mapping and above all, create synergy....</p>
+                            <h2>Villa</h2>
+                            <p>
+                                villa américaine comme une résidence de prestige offrant une vue imprenable à ses occupants
+                            </p>
                             <div class="villa21">
-                                <i class="fa fa-bed"><span> Bed:4 </span></i>
-                                <i class="fa fa-shower"><span> Bath: 6 </span></i>
-                                <i class="fa fa-th"><span> 2750 SF </span></i>            
+                                <i class="fa fa-bed"><span> Chambre:4 </span></i>
+                                <i class="fa fa-shower"><span> Salle de Bain:4</span></i>
+                                <i class="fa fa-th"><span> 300 SP </span></i>            
                             </div>
                         </div>
                     </div> 
                 </div>
                
-            </div>
-            <!-- <div class="pagination" id="demo">
-                <nav aria-label="...">
-                    <ul class="pagination pagination-circle">
-                        <li class="page-item">
-                        <a class="page-link">Previous</a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item active" aria-current="page">
-                        <a class="page-link" href="#">2 <span class="visually-hidden">(current)</span></a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>  -->
-            <div class="footer">
             </div> 
         </div> 
 </template>
@@ -268,7 +251,7 @@ export default {
         border-width: 1px;
         border-style: solid;
         border-radius: 5px;
-        height: 400px;
+        height: 430px;
         margin-right: 20px;
     }
     .villa:hover{
@@ -288,7 +271,7 @@ export default {
     }
     .col_sale{
         position: absolute;
-        top:-10%;
+        top:-2%;
         background-color:black;
         padding: 5px;
         border-radius: 5px;
@@ -297,7 +280,7 @@ export default {
     }
     .price{
         position: absolute;
-        top: 25%;
+        top: 45%;
         background-color: black;
         padding: 5px;
         border-radius: 5px;

@@ -14,11 +14,10 @@
                         <img src="../assets/slide.jpg" class="d-block w-100"
                         alt="Sunset Over the City" />
                         <div class="carousel-caption">
-                        <h5>The New House has been Built</h5>
-                        <p class="para1">Whatever your property needs, IMMO Properties is there for you..</p>
+                        <h5>LOUER ET ACHETER LES MAISONS DE VOS RÊVES</h5>
+                        <p class="para1">Quels que soient vos besoins immobiliers, IMMO Properties est là pour vous.</p>
                         <div class="lien">
                                 <a href="">view More</a>
-                                <a href="">Priorite</a>
                             </div>
                         </div>
                     </div>
@@ -26,11 +25,10 @@
                         <img src="../assets/slides.jpg" class="d-block w-100"
                         alt="Canyon at Nigh" />
                         <div class="carousel-caption ">
-                        <h4>Planifier une Construction </h4>
-                        <p class="para2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <h4>LES PLUS  BEAUX MAISONS SONT CHEZ NOUS </h4>
+                        <p class="para2">Tous vous conviendra et a moindres coûts</p>
                             <div class="lien">
                                 <a href="">view More</a>
-                                <a href="">Priorite</a>
                             </div>
                         </div>
                     </div>
@@ -39,22 +37,21 @@
                         <img src="../assets/slide3.jpg" class="d-block w-100"
                         alt="Cliff Above a Stormy Sea" />
                         <div class="carousel-caption d-none d-md-block">
-                        <h3>Find Your Dream  Home</h3>
-                        <p class="para3">Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                        <h3>BIENVENUE CHEZ IMMO</h3>
+                        <p class="para3">Notre priorité à Immo c'est votre satisfaction</p>
                         <div class="lien">
                                 <a href="">view More</a>
-                                <a href="">Priorite</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-mdb-target="#carouselMaterialStyle" data-mdb-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <button class="carousel-control-prev " type="button" data-mdb-target="#carouselMaterialStyle" data-mdb-slide="prev">
+                    <span class="carousel-control-prev-icon previous" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-mdb-target="#carouselMaterialStyle" data-mdb-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
+                <button class="carousel-control-next " type="button" data-mdb-target="#carouselMaterialStyle" data-mdb-slide="next">
+                    <span class="carousel-control-next-icon icone next" aria-hidden="true"></span>
+                    <span class="visually-hidden ">Next</span>
                 </button>
             </div>
             
@@ -101,37 +98,57 @@ export default {
 
     .carousel-caption{
     position: absolute;
-    top: 25%;
+    top: 40%;
 }
 .carousel-caption h5, h4, h3{
-    font-size: 60px;
-    -webkit-text-stroke: 1px #FFF;
-    color: transparent;
+    font-size: 80px;
+    /* -webkit-text-stroke: 1px #FFF; */
+    color: #FFF;
 }
 .carousel-caption p{
-  font-weight: bold;
   font-size: 30px;
-
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: #FFF;
 }
-    .lien{
+.next{
+    background-color: black;
+    padding: 20px;
+    height: 90px;
+    border-radius: 20px;
+    color: #FFF;
+}
+
+.previous{
+    background-color: black;
+    padding: 20px;
+    height: 90px; 
+    border-radius: 20px;
+}
+
+ .lien{
         margin-top: 60px;
    
 }
 .lien a{
     position: relative;
-    padding: 20px;
-    /* border: 1px solid #FFF; */
-    /* background-color: blueviolet; */
+    padding: 20px 40px;
+    border: 1px solid #FFF; 
+    background-color: blueviolet; 
     margin-right: 20px;
-   
     text-decoration: none;
     color: #FFF;
     font-weight: bold;
     font-size: 30px;
+    border-radius:20px;
+    transition: 0.5s;
+}
+.lien a:hover{
+    border: 3px solid blueviolet; 
+    background-color: #fff; 
+    color: blueviolet;
 }
 
-.lien a::after {
+/* .lien a::after {
     content: "";
     position: absolute;
     width: 20px;
@@ -150,7 +167,7 @@ export default {
         left: -5px;
         border-top: 5px solid #fff;
         border-left: 5px dashed blueviolet;
-    }
+    } */
     
 .lien a:hover::before,
 .lien a:hover::after {
@@ -158,7 +175,7 @@ export default {
         height: calc(100% + 9px);
 }
 
-h5 {
+/* h5 {
 
     animation: fadeInLeft 4s ease-in-out;
     }
@@ -171,10 +188,10 @@ h5 {
     to {
     opacity: 1;
     }
-}
+} */
 
 
-
+/* 
 h4 {
     color: rgb(173, 117, 226);
     animation: fadeInRight 4s ease-in-out;
@@ -189,11 +206,11 @@ h4 {
     opacity: 1;
     }
 }
-    
+     */
 
 
 
-
+/* 
 h3 {
     color: #fff;
   animation: slideOutLeft 4s ease-in-out;
@@ -207,9 +224,9 @@ h3 {
   to {
     opacity: 1;
   }
-}
+} */
 
-.para1 {
+/* .para1 {
     color:rgb(173, 117, 226) ;
     animation: fadeInDown 4s ease-in-out;
 }
@@ -253,7 +270,7 @@ from {
 to {
   opacity: 1;
 }
-}
+} */
 
 
 

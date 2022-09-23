@@ -12,7 +12,7 @@
                     </div>
                     <div class="service1">
                         <div class="achat">
-                            <img src="../assets/bac3.jpg" alt="">
+                            <img src="../assets/bac1.jpg" alt="">
                             <div class="info">
                                 <a href="/location">Location</a>
                             </div>
@@ -73,7 +73,7 @@ export default {
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(to bottom,rgba(145, 26, 220, 0.5),rgb(117, 106, 132));
+        /* background: linear-gradient(to bottom,rgba(145, 26, 220, 0.5),rgb(117, 106, 132)); */
         z-index: 2;
         transition: 0.5s all;
         opacity: 0.3;

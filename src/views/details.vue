@@ -11,15 +11,6 @@
                 <div class="carre" v-for="images in homedocSnap.images" :key="images.id">
                   <img :src="images" alt="">
                 </div>
-                <!-- <div class="carre">
-                  <img src="../assets/maison1.jpg" alt="">
-                </div>
-                <div class="carre">
-                  <img src="../assets/maison1.jpg" alt="">
-                </div>
-                <div class="carre">
-                  <img src="../assets/maison1.jpg" alt="">
-                </div> -->
             </div>
         </div>
         <!-- <h1 style="text-align:center"></h1> -->
@@ -319,11 +310,11 @@ import footerComponent from '../components/footer.vue'
     width: 320px;
     height: 150px;
     /* border:1px solid green; */
-    margin-top: 40px;
+    margin-top: 20px;
  }
  .carre img{
-    width: 320px;
-    height: 150px;
+    width: 370px;
+    height: 200px;
  }
  .detail{
    margin-top: 30px;
@@ -447,11 +438,12 @@ import footerComponent from '../components/footer.vue'
   }
  .autre-associe{
    width: 100%;
-   /* height: 800px; */
+   height: 180vh;
    display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    margin-top: -20%;
  }
  h1{
    padding-top: 50px;

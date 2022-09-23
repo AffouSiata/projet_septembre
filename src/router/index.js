@@ -8,6 +8,8 @@ import details from '../views/details.vue'
 import admin from '../views/admin.vue'
 import achat from '../views/achat.vue'
 import location from '../views/location.vue'
+import profile from '../views/profile.vue'
+import modifie from '../views/modifie.vue'
 const routes = [
   {
     path: '/admin',
@@ -46,14 +48,25 @@ const routes = [
     component: achat
   },
   {
-    path: '/location/',
+    path: '/location',
     name: 'location',
     component: location,
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: profile,
   },
   {
     path: '/details/:id',
     name: 'details',
     component: details,
+    props:true
+  },
+  {
+    path: '/modifie/:id',
+    name: 'modifie',
+    component: modifie,
     props:true
   },
   

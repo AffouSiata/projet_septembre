@@ -20,59 +20,10 @@
                                 
                     </div>
                     <div class="botton">
-                        <!-- <a href=`/details/${{doc.id}} `>Details</a> -->
                         <button @click.prevent="details(doc.id)">Details</button>
                     </div>
                 </div>
             </div>
-            <!-- <div class="villa">
-                <div class="villa1" style="position:relative">
-                    <img src="../assets/maison1.jpg" alt="">
-                        <div class="col_sale">For Sale</div>
-                        <div class="price">2000 USD</div>
-                </div>
-                <div class="villa2">
-                    <h2>Centennial Drive</h2>
-                    <p>Taking transformation mapping and above all, create synergy....</p>
-                    <div class="villa21">
-                        <i class="fa fa-bed"><span> Bed:4 </span></i>
-                        <i class="fa fa-shower"><span> Bath: 6 </span></i>
-                        <i class="fa fa-th"><span> 2750 SF </span></i>            
-                </div>
-                </div>
-            </div> -->
-            <!-- <div class="villa">
-                <div class="villa1" style="position:relative">
-                    <img src="../assets/maison1.jpg" alt="">
-                        <div class="col_sale">For Sale</div>
-                        <div class="price">2000 USD</div>
-                </div>
-                <div class="villa2">
-                    <h2>Centennial Drive</h2>
-                    <p>Taking transformation mapping and above all, create synergy....</p>
-                    <div class="villa21">
-                        <i class="fa fa-bed"><span> Bed:4 </span></i>
-                        <i class="fa fa-shower"><span> Bath: 6 </span></i>
-                        <i class="fa fa-th"><span> 2750 SF </span></i>            
-                </div>
-                </div>
-            </div> -->
-            <!-- <div class="villa">
-                <div class="villa1" style="position:relative">
-                    <img src="../assets/maison1.jpg" alt="">
-                        <div class="col_sale">For Sale</div>
-                        <div class="price">2000 USD</div>
-                </div>
-                <div class="villa2">
-                    <h2>Centennial Drive</h2>
-                    <p>Taking transformation mapping and above all, create synergy....</p>
-                    <div class="villa21">
-                        <i class="fa fa-bed"><span> Bed:4 </span></i>
-                        <i class="fa fa-shower"><span> Bath: 6 </span></i>
-                        <i class="fa fa-th"><span> 2750 SF </span></i>            
-                </div>
-                </div>
-            </div> -->
         </div>
     </div>
     <footerComponent/>
@@ -140,7 +91,7 @@ align-items: center;
 .element{
 
 width: 70vw;
-height: 180vh;
+height: 140vh;
 display: grid;
 grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
 padding: 20px;
@@ -165,74 +116,71 @@ margin-right: 20px;
 .villa:hover{
 box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
-.villa1{
-
-}
 .col_rent{
-position: absolute;
-top:-1%;
-background-color: #fff;
-padding: 5px;
-border-radius: 5px;
-color: blueviolet;
-box-shadow: 2px 2px 2px 2px rgb(79, 77, 77);
-font-weight: bold;
+    position: absolute;
+    top:-1%;
+    background-color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    color: blueviolet;
+    box-shadow: 2px 2px 2px 2px rgb(79, 77, 77);
+    font-weight: bold;
 }
 
 .col_sale{
-position: absolute;
-top:-10%;
-background-color:black;
-padding: 5px;
-border-radius: 5px;
-color: #fff;
-box-shadow: 2px 2px 2px 2px rgb(79, 77, 77);
+    position: absolute;
+    top:-10%;
+    background-color:black;
+    padding: 5px;
+    border-radius: 5px;
+    color: #fff;
+    box-shadow: 2px 2px 2px 2px rgb(79, 77, 77);
 }
 .price{
-position: absolute;
-top: 25%;
-background-color: black;
-padding: 5px;
-border-radius: 5px;
-color: #fff;
-box-shadow: 2px 2px 2px 2px rgb(79, 77, 77);
-opacity: 0.8;
+    position: absolute;
+    top: 25%;
+    background-color: black;
+    padding: 5px;
+    border-radius: 5px;
+    color: #fff;
+    box-shadow: 2px 2px 2px 2px rgb(79, 77, 77);
+    opacity: 0.8;
 }
 .price:hover{
     background-color: blueviolet;
 }
 .villa1 img{
-/* width: 398px; */
-width: 100%;
-height: 200px;
-object-fit: cover;
-border-radius: 5px;
+    /* width: 398px; */
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
 }
 .villa2 {
     display:flex;
     flex-direction: column;
 }
 .villa2 h2{
-padding-top: 20px;
-text-align: center;
-color: blueviolet;
+    padding-top: 20px;
+    text-align: center;
+    color: blueviolet;
 }
 .villa2 p{
-padding: 0 0 12px;
-color: #666;
-text-align: center;
+    padding: 0 0 12px;
+    color: #666;
+    text-align: center;
 }
 .villa21{
-text-align: center;
+    text-align: center;
 }
 .villa21 i{
-margin-right: 20px;
-color: blueviolet;
-font-size: 20px;
+    margin-right: 20px;
+    color: blueviolet;
+    font-size: 20px;
 }
 .villa21 span{
-color: #666;
-font-size: 13px;
+    color: #666;
+    font-size: 13px;
 }
 button{
     background-color: blueviolet;

@@ -1,12 +1,15 @@
 <template>
-    <div>
-        
-    </div>
+    <adminComponent/>
 </template>
 
 <script>
-export default {
+import adminComponent from '../components/adminC.vue'
 
+export default {
+    name:"profile",
+    components:{
+        adminComponent
+    }
 }
 </script>
 

@@ -48,6 +48,9 @@ export default {
                     Navmenu.classList.toggle("nav-active")
               })
             })
+
+
+            
         }
 }
 </script>
@@ -61,7 +64,7 @@ export default {
         width: 100%;
         box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(1, 5, 9, 0.35) 0px -2px 6px 0px inset;
         /* border: 3px solid blue; */
-        /* background-color: black; */
+        background-color: black;
         display: flex;
         justify-content: space-around;
         z-index: 1;
