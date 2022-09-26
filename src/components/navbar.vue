@@ -2,7 +2,7 @@
   <div>
         <div class="contener">
             <div class="logo">
-                <p><span>I</span>mmo</p>
+                    <router-link to="/"><p><span>I</span>mmo</p></router-link>
             </div>
             <nav>
                 <ul class="nav-menu">

@@ -4,7 +4,12 @@
    </div>
     <div class="contenu">
         <div class="element">
-            <div class="villa" v-for="doc in sale" :key="doc.id">
+            <!-- aucun bien ne s'affiche -->
+            <div v-if="aucun">
+                {{aucun}}
+            </div>
+             <!--fin aucun bien ne s'affiche -->
+            <div class="villa" v-for="doc in sale" :key="doc.id" v-else>
                 <div class="villa1">
                     <img :src="doc.images[0]" alt="">
                     <div class="col_rent">{{doc.cate}}</div> 
@@ -42,7 +47,8 @@ export default {
     },
     data(){
         return{
-            sale:[]
+            sale:[],
+            aucun:""
         }
     },
     methods:{
@@ -56,16 +62,24 @@ export default {
         const q = query(homeColRef, where("cate", "==", "For Sale"));
              console.log("ddddd",q);
              const snapSnapshot = await getDocs(q);
-             let sale = [];
-             console.log("ssssss",snapSnapshot);
-             snapSnapshot.forEach((doc) => {
-                let homedata = doc.data()
-                homedata.id = doc.id;
-                sale.push(homedata);
-                let monid = doc.id
-             console.log("azerrtt",monid, " => ", homedata);
-        });
-        this.sale = sale;
+             console.log("ta",snapSnapshot.docs.length > 0);
+            if(snapSnapshot.docs.length > 0){
+                let sale = [];
+                    console.log("ssssss",snapSnapshot);
+                    snapSnapshot.forEach((doc) => {
+                        let homedata = doc.data()
+                        homedata.id = doc.id;
+                        sale.push(homedata);
+                        let monid = doc.id
+                    //  console.log("azerrtt",monid, " => ", homedata);
+                });
+                this.sale = sale;
+            }
+            else{
+                this.aucun = "gfvghdfhdfhjdkjf"
+            }
+
+             
     }
 }
 </script>

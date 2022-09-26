@@ -12,26 +12,30 @@
                     <h2>Register</h2>
                     <div class="forme-input">
                         <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Firstname" v-model="firstname">
+                        <input type="text" placeholder="nom" v-model="nom">
                     </div>
+                    <small v-if="v$.nom.$error">{{v$.nom.$errors[0].$message}}</small><br>
                     <div class="forme-input" >
                         <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Lastname" v-model="lastname">
+                        <input type="text" placeholder="prenom" v-model="prenom">
                     </div>
+                    <small v-if="v$.prenom.$error">{{v$.prenom.$errors[0].$message}}</small><br>
                     <div class="forme-input">
                         <i class="fas fa-envelope"></i>
                         <input type="email" placeholder="Email" v-model="email">
                     </div>
+                    <small v-if="v$.email.$error">{{v$.email.$errors[0].$message}}</small><br>
                     <div class="forme-input">
                         <i class="fas fa-unlock"></i>
-                        <input type="password" placeholder="Password" v-model="password">
+                        <input type="password" class="mot" placeholder="Password" v-model="password">
                         <div class="password-icon">
                             <i class="fas fa-eye masque" @click="eyye"></i>
                             <i class="fas fa-eye-slash masque" @click="eyyeoff"></i>
                         </div>
                     </div>
+                    <small v-if="v$.password.$error">{{v$.password.$errors[0].$message}}</small><br>
                     <div class="forme-btn">
-                        <button @click="register">Envoyer</button>
+                        <button @click.prevent="register">Envoyer</button>
                     </div>
                 </form>
         </div>
@@ -40,27 +44,57 @@
 </template>
 
 <script>
+import useVuelidate from '@vuelidate/core';
+import {champvaleur,champemail,mdp_plex,longminNom,longmaxNom,longmaxprenom,longminprenom} from "../validate/validatore";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import {auth} from '../firebase';
 export default {
     name:'register',
-    dtat(){
+    data(){
         return{
-            firstname:"",
-            lastname:"",
+            nom:"",
+            prenom:"",
             email:"",
-            password:""
+            password:"",
+            v$: useVuelidate()
+        }
+    },
+    validations: {
+        nom: { champvaleur, longmin: longminNom(4), longmax: longmaxNom(10)
+        },
+        prenom: { champvaleur, longPmin: longminprenom(6), longPmax: longmaxprenom(20)
+        },
+        email: { champvaleur, champemail
+        },
+        password: { champvaleur,mdp_plex
         }
     },
     methods:{
         register(){
-            
-
-            let inscrire ={
-                firstname:this.firstname,
-                lastname:this.lastname,
-                email:this.email,
-                password:this.password
+            this.v$.$touch();
+            if (this.v$.$errors.length == 0) {
+                // console.log("c'est bon tu peux pas passer a la suite");
+                let inscrire ={
+                    nom:this.nom,
+                    prenom:this.prenom,
+                    email:this.email,
+                    password:this.password
             }
-            console.log("logger",inscrire);
+                console.log("logger",inscrire);
+
+                createUserWithEmailAndPassword(auth, this.email.trim(), this.password)
+                    .then((user) => {
+                        console.log(user);
+                    this.$router.replace("/login");
+                })
+                    .catch((e) => {
+                    console.log(e.code);
+                    showerror(e);
+                });
+
+            }
+
+           
 
         },
         
@@ -69,21 +103,20 @@ export default {
             const eyes = document.querySelector(".fa-eye");
             const eyeoffs = document.querySelector(".fa-eye-slash");
             const passwordFields = document.querySelector("input[type=password]");
-            console.log("zzzzz",eyes);
+
 
             eyes.style.display = "none";
             eyeoffs.style.display = "block";
             passwordFields.type = "text";
         }, 
         eyyeoff(){
-            const eyeoffs = document.querySelector(".fa-eye-slash");
-            const eyes = document.querySelector(".fa-eye");
-            const passwordFields = document.querySelector("input[type=text]");
-            console.log("offfff",eyeoffs);
+            const eyeoff = document.querySelector(".fa-eye-slash");
+            const eye = document.querySelector(".fa-eye");
+            const passwordField = document.querySelector(".mot");
 
-            eyeoffs.style.display = "none";
-            eyes.style.display = "block";
-            passwordFields.type = 'password';
+            eyeoff.style.display = "none";
+            eye.style.display = "block";
+            passwordField.type = 'password';
         }
     }
 }
@@ -141,14 +174,14 @@ form h2{
 .forme-input{
     position: relative;
     background-color: rgb(23, 21, 142);
-    margin: 30px;
+    margin: 0px 30px 0px 0px;
     border-top-left-radius:10px ;
     border-bottom-right-radius:10px ;
 }
 .forme-input i{
     color: #fff;
     background-color: black;
-    padding: 12px;
+    padding: 16px;
     border-top-left-radius:10px ;
 }
 .forme-input .masque{
@@ -204,6 +237,10 @@ form h2{
     border: 3px dashed rgb(189, 145, 231);
     background-color: #fff;
     color: rgb(189, 145, 231);
+}
+small{
+    color: red;
+        
 }
 @media (max-width:800px) {
     .images{

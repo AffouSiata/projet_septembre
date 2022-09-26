@@ -1,145 +1,141 @@
 <template>
-    <div class="loginne">
+    <div class="enregistre">
         <div class="content">
             <div class="images">
-                <img src="../assets/img2.jpg" alt="">
+                <img src="../assets/img1.jpg" alt="">
             </div>
             <div class="formulaire">
                 <div class="entete">
                     <i class="far fa-user"></i>
                 </div>
                 <form action="">
-                    <h2>Login</h2>
-                    <p>Veuillez Creér un <a href="/register">compte</a></p>
+                    <h2>Register</h2>
+                    <div class="forme-input">
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="nom" v-model.trim="$v.nom.$model" :class="{'is-invalid':$v.nom.$error,'is-valid':!$v.nom.$invalid}">
+                    </div>
+                    <div class="valid-feedback">your last name is valid</div>
+                    <div class="invalid-feedback">
+                        <span v-if="!$v.nom.required">nom is required</span>
+                        <span v-if="!$v.nom.minLength">nom must have at least{{$v.nom.$params.minLength.min}} letters</span>
+                        <span v-if="!$v.nom.maxLength">nom must have at most{{$v.nom.$params.maxLength.min}} letters</span>
+                    </div>
+                    <div class="forme-input" >
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="prenom" v-model.trim="$v.prenom.$model" :class="{'is-invalid':$v.prenom.$error,'is-valid':!$v.prenom.$invalid}">
+                    </div>
+                    <div class="valid-feedback">your last name is valid</div>
+                    <div class="invalid-feedback">
+                        <span v-if="!$v.prenom.required">prenom is required</span>
+                        <span v-if="!$v.prenom.minLength">prenom must have at least{{$v.prenom.$params.minLength.min}} letters</span>
+                        <span v-if="!$v.prenom.maxLength">prenom must have at most{{$v.prenom.$params.maxLength.min}} letters</span>
+                    </div>
                     <div class="forme-input">
                         <i class="fas fa-envelope"></i>
                         <input type="email" placeholder="Email" v-model="email">
                     </div>
-                    <small v-if="v$.email.$error">{{v$.email.$errors[0].$message}}</small><br>
                     <div class="forme-input">
                         <i class="fas fa-unlock"></i>
-                        <input type="password" placeholder="Password" v-model="password">
+                        <input type="password" class="mot" placeholder="Password" v-model="password">
                         <div class="password-icon">
                             <i class="fas fa-eye masque" @click="eyye"></i>
                             <i class="fas fa-eye-slash masque" @click="eyyeoff"></i>
                         </div>
                     </div>
-                    <small v-if="v$.password.$error">{{v$.password.$errors[0].$message}}</small><br>
                     <div class="forme-btn">
-                        <button @click.prevent="login">Envoyer</button>
+                        <button @click.prevent="register">Envoyer</button>
                     </div>
                 </form>
-            </div>
         </div>
+    </div>
     </div>
 </template>
 
 <script>
-import useVuelidate from '@vuelidate/core';
-import {champvaleur,champemail,mdp_plex,} from "../validate/validatore";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import {auth} from '../firebase';
+import {required,minLength,maxLength} from "@vuelidate/validators";
 export default {
-    name:'login',
-    data(){
+    name:'essaie',
+  data(){
         return{
-
-            email:"",
-            password:'',
-            v$: useVuelidate()
-            
+            nom:"",
+            prenom:"",
         }
     },
     validations: {
-        email: { champvaleur, champemail
+        nom: { required, minLength:minLength(3),maxLength:maxLength(5)
         },
-        password: { champvaleur,mdp_plex
-        }
+        prenom: { required, minLength:minLength(5),maxLength:maxLength(13)
+        },
     },
     methods:{
-        login(){
-            this.v$.$touch();
-            if (this.v$.$errors.length == 0) {
-                    // console.log("c'est bon tu peux pas passer a la suite");
-                let connexion = {
+        register(){
+                let inscrire ={
+                    nom:this.nom,
+                    prenom:this.prenom,
                     email:this.email,
                     password:this.password
+            }
+                console.log("logger",inscrire);
 
-                }
-            
-                console.log('loger',connexion);
+        }
 
-                signInWithEmailAndPassword(auth, this.email, this.password)
-                .then((user)=>{
+           
 
-                    this.$router.replace('/');
-                })
-                .catch((e)=>{
-                    console.log(e.code);
-                    showerror(e)
-                })
-            }  
-        },
-
+    },
+        
 
         eyye(){
-            const eye = document.querySelector(".fa-eye");
-            const eyeoff = document.querySelector(".fa-eye-slash");
-            const passwordField = document.querySelector("input[type=password]");
-            console.log("zzzzz",eye);
+            const eyes = document.querySelector(".fa-eye");
+            const eyeoffs = document.querySelector(".fa-eye-slash");
+            const passwordFields = document.querySelector("input[type=password]");
 
-            eye.style.display = "none";
-            eyeoff.style.display = "block";
-            passwordField.type = "text";
+
+            eyes.style.display = "none";
+            eyeoffs.style.display = "block";
+            passwordFields.type = "text";
         }, 
         eyyeoff(){
             const eyeoff = document.querySelector(".fa-eye-slash");
             const eye = document.querySelector(".fa-eye");
-            const passwordField = document.querySelector("input[type=text]");
-            console.log("offfff",eyeoff);
+            const passwordField = document.querySelector(".mot");
 
             eyeoff.style.display = "none";
             eye.style.display = "block";
             passwordField.type = 'password';
         }
-    }
-
+  
 }
 </script>
 
 <style scoped>
-
-.loginne{
+    .enregistre{
     width: 100vw;
     height: 100vh;
     background-color: rgb(189,144,231);
+;
 }
-
-.content{
+    .content{
     position: absolute;
     top: 20%;
-    left: 25%;
+    left: 23%;
     height: 540px;
     width: 1000px;
     display: flex;
     padding: 30px;
-   
 }
 .images{
     width: 500px;
 }
 .images img{
-  
-    height: 400px;
+    height: 480px;
     width: 470px;
 }
 .formulaire{
-    height: 400px;
     width: 500px;
     background-color: #fff;
-    /* box-shadow:0 0 5px; */
+    /* box-shadow:0 0 10px; */
     /* box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset; */
-    z-index: 10; 
+    z-index: 10;    
 }
 .entete{
     width: 100%;
@@ -150,7 +146,7 @@ export default {
     padding: 20px;
     font-size: 80px;
     background-color: black;
-    margin-left: 190px;
+    margin-left: 180px;
     margin-top: -60px;
     color: #fff;
 }
@@ -160,13 +156,9 @@ form h2{
     color: blueviolet;
     font-size: 35px;
 }
-form p{
-    margin-top: 10px;
-    text-align: center;  
-}
 .forme-input{
     position: relative;
-    background-color: rgb(94, 175, 202);
+    background-color: rgb(23, 21, 142);
     margin: 0px 30px 0px 0px;
     border-top-left-radius:10px ;
     border-bottom-right-radius:10px ;
@@ -185,14 +177,13 @@ form p{
 }
 .forme-input input{
     width: 300px;
-    background-color: rgb(94, 175, 202);
+  background-color: rgb(23, 21, 142);
     border: none;
     outline: none;
     padding: 8px;
     font-size: 20px;
     transition: all 0.2s;
     color: #fff;
-    
 }
 .forme-input .password-icon {
     display: flex;
@@ -208,7 +199,7 @@ form p{
 .forme-input .password-icon:hover {
     cursor: pointer;
     color: black;
-  }
+}
   
 .forme-input .password-icon .fa-eye-slash {
     display: none;
@@ -238,12 +229,10 @@ small{
 }
 @media (max-width:800px) {
     .images{
-        display: none;  
+        display: none;
     }
     .content{
         left:13%
     }
-
 }
-
 </style>

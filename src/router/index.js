@@ -10,6 +10,7 @@ import achat from '../views/achat.vue'
 import location from '../views/location.vue'
 import profile from '../views/profile.vue'
 import modifie from '../views/modifie.vue'
+import essaie from '../views/essaie.vue'
 const routes = [
   {
     path: '/admin',
@@ -67,6 +68,12 @@ const routes = [
     path: '/modifie/:id',
     name: 'modifie',
     component: modifie,
+    props:true
+  },
+  {
+    path: '/essaie',
+    name: 'essaie',
+    component: essaie,
     props:true
   },
   
