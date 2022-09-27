@@ -116,7 +116,7 @@ import liste2Component from '../components/liste2.vue'
   transition: all 0.5s ease;
 }
 .sidebar.active{
-  width: 60px;
+  width: 80px;
 }
 .sidebar .logo-details{
   height: 80px;

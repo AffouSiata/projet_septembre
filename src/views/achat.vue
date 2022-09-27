@@ -62,7 +62,7 @@ export default {
         const q = query(homeColRef, where("cate", "==", "For Sale"));
              console.log("ddddd",q);
              const snapSnapshot = await getDocs(q);
-             console.log("ta",snapSnapshot.docs.length > 0);
+             console.log("ta",snapSnapshot);
             if(snapSnapshot.docs.length > 0){
                 let sale = [];
                     console.log("ssssss",snapSnapshot);

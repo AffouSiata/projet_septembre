@@ -10,24 +10,30 @@
                 </div>
                 <form action="">
                     <h2>Register</h2>
+                    <span class="error"></span>
                     <div class="forme-input">
                         <i class="fas fa-user"></i>
-                        <input type="text" placeholder="nom" v-model="nom">
+                        <input type="text" name="nom" placeholder="nom" v-model="nom">
                     </div>
                     <small v-if="v$.nom.$error">{{v$.nom.$errors[0].$message}}</small><br>
                     <div class="forme-input" >
                         <i class="fas fa-user"></i>
-                        <input type="text" placeholder="prenom" v-model="prenom">
+                        <input type="text" name="prenom" placeholder="prenom" v-model="prenom">
                     </div>
                     <small v-if="v$.prenom.$error">{{v$.prenom.$errors[0].$message}}</small><br>
                     <div class="forme-input">
                         <i class="fas fa-envelope"></i>
-                        <input type="email" placeholder="Email" v-model="email">
+                        <input type="email" name="email" placeholder="Email" v-model="email">
                     </div>
                     <small v-if="v$.email.$error">{{v$.email.$errors[0].$message}}</small><br>
                     <div class="forme-input">
+                        <i class="fa-solid fa-phone"></i>
+                        <input type="number" name="number" placeholder="numero" v-model="numero">
+                    </div>
+                    <small v-if="v$.numero.$error">{{v$.numero.$errors[0].$message}}</small><br>
+                    <div class="forme-input">
                         <i class="fas fa-unlock"></i>
-                        <input type="password" class="mot" placeholder="Password" v-model="password">
+                        <input type="password" name="password" class="mot" placeholder="Password" v-model="password">
                         <div class="password-icon">
                             <i class="fas fa-eye masque" @click="eyye"></i>
                             <i class="fas fa-eye-slash masque" @click="eyyeoff"></i>
@@ -45,9 +51,11 @@
 
 <script>
 import useVuelidate from '@vuelidate/core';
-import {champvaleur,champemail,mdp_plex,longminNom,longmaxNom,longmaxprenom,longminprenom} from "../validate/validatore";
+import {champvaleur,champemail,mdp_plex,longminNom,longmaxNom,longmaxprenom,longminprenom,longminnumero} from "../validate/validatore";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import {auth} from '../firebase';
+import {auth,homeColRefs} from '../firebase';
+import { doc, setDoc } from "firebase/firestore"; 
+
 export default {
     name:'register',
     data(){
@@ -55,6 +63,7 @@ export default {
             nom:"",
             prenom:"",
             email:"",
+            numero:"",
             password:"",
             v$: useVuelidate()
         }
@@ -62,35 +71,61 @@ export default {
     validations: {
         nom: { champvaleur, longmin: longminNom(4), longmax: longmaxNom(10)
         },
-        prenom: { champvaleur, longPmin: longminprenom(6), longPmax: longmaxprenom(20)
+        prenom: { champvaleur,longPmin: longminprenom(6), longPmax: longmaxprenom(20)
         },
-        email: { champvaleur, champemail
+        email: { champvaleur, champemail,
         },
-        password: { champvaleur,mdp_plex
+        numero: { champvaleur,longnum: longminnumero(10)
+        },
+        password: { champvaleur,mdp_plex,
         }
     },
     methods:{
-        register(){
+      register(){
             this.v$.$touch();
             if (this.v$.$errors.length == 0) {
                 // console.log("c'est bon tu peux pas passer a la suite");
                 let inscrire ={
                     nom:this.nom,
                     prenom:this.prenom,
+                    numero:this.numero,
                     email:this.email,
                     password:this.password
-            }
+                }
                 console.log("logger",inscrire);
+                function MesErreur(erreur){
+                    document.querySelector(".error").innerHTML = erreur;
+                        if (erreur.code === 'auth/weak-password') {
+                            MesErreur("Le mot de passe est trop faible");
+                            return false;
+                        }
+                        if (erreur.code === 'auth/email-already-in-use') {
+                            MesErreur("l'email existe déja.");
+                            return false;
+                        } 
+                          
+
+                }
 
                 createUserWithEmailAndPassword(auth, this.email.trim(), this.password)
                     .then((user) => {
-                        console.log(user);
-                    this.$router.replace("/login");
-                })
-                    .catch((e) => {
-                    console.log(e.code);
-                    showerror(e);
-                });
+                        
+                        console.log("util",user);
+                        console.log("zzzzz",user.user.uid);
+                        setDoc(doc(homeColRefs,user.user.uid),{
+                            nom: this.nom,
+                            prenom: this.prenom,
+                            numero:this.numero
+                        })
+                        .then(()=>{
+                            console.log("uesr enregistrer");
+                        })
+                    
+                        this.$router.replace("/login");
+                    })
+                    .catch((error) => {
+                       MesErreur(error)
+                    });
 
             }
 
@@ -133,7 +168,7 @@ export default {
     position: absolute;
     top: 20%;
     left: 23%;
-    height: 540px;
+    height: 600px;
     width: 1000px;
     display: flex;
     padding: 30px;
@@ -142,8 +177,9 @@ export default {
     width: 500px;
 }
 .images img{
-    height: 480px;
+    height: 540px;
     width: 470px;
+    object-fit: cover;
 }
 .formulaire{
     width: 500px;
@@ -241,6 +277,11 @@ form h2{
 small{
     color: red;
         
+}
+.error{
+    color: red;
+    font-weight: bold; 
+    text-align: center;
 }
 @media (max-width:800px) {
     .images{

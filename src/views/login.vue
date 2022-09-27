@@ -10,6 +10,7 @@
                 </div>
                 <form action="">
                     <h2>Login</h2>
+                    <span class="error"></span>
                     <p>Veuillez Creér un <a href="/register">compte</a></p>
                     <div class="forme-input">
                         <i class="fas fa-envelope"></i>
@@ -69,14 +70,27 @@ export default {
             
                 console.log('loger',connexion);
 
+                function MesErreur(erreur){
+                    document.querySelector(".error").innerHTML = erreur;
+                        if (errorCode === 'auth/wrong-password') {
+                            MesErreur("Mauvais mot de passe.");
+                            return false;
+                        } 
+                        if (errorCode === 'auth/email-already-in-use') {
+                            MesErreur("l'email existe déja.");
+                            return false;
+                        }
+                          
+
+                }
+
                 signInWithEmailAndPassword(auth, this.email, this.password)
                 .then((user)=>{
 
                     this.$router.replace('/');
                 })
                 .catch((e)=>{
-                    console.log(e.code);
-                    showerror(e)
+                    MesErreur(e)
                 })
             }  
         },
@@ -234,6 +248,11 @@ form p{
 }
 small{
     color: red;
+        
+}
+.error{
+    color: red;
+    font-weight: bold;
         
 }
 @media (max-width:800px) {

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="espace" v-if="modalite" @click="modale">
+        <div class="espace" v-if="modalite" @click.self="modale">
             <div class="modalite">
                 <form action="">
                     <div class="formes">
@@ -78,19 +78,20 @@ export default {
             }
 
             console.log('element',element);
-            addDoc(homeColRef,element).then((adm)=>{
-                console.log("res",adm);
-                this.$router.replace('/admin')
-            })
-            .catch((error)=>{
-                console.log("rdsxfxdf",error);
-                console.log("vous avez mal renseignez vos données");
-            })
+            // addDoc(homeColRef,element).then((adm)=>{
+            //     console.log("res",adm);
+            //     this.$router.go()
+            // })
+            // .catch((error)=>{
+            //     console.log("rdsxfxdf",error);
+            //     console.log("vous avez mal renseignez vos données");
+            // })
         },
 
     },
         
     async uploadImage(e){
+        console.log('xgkxngw',e);
            let touslesimages =[];
            Object.values(e.target.files).forEach((elem)=>{
             console.log("images",elem.name);
@@ -106,22 +107,23 @@ export default {
             )
            })
            const images = await Promise.all(touslesimages)
+           console.log(images);
            this.image =images
            console.log("azertyuiolkjhgfds",this.image);
 
     },
-    async mounted(){
-            const querySnapshot = await getDocs(homeColRef);
-            console.log("lllllll",querySnapshot);
-            let liste =[]
-                querySnapshot.forEach((doc) => {
-                    let listedata = doc.data()
-                    listedata.id = doc.id;
-                    liste.push(listedata);
-                console.log(doc.id, " => ", doc.data());
-            }) 
-            this.liste = liste 
-    }
+    // async mounted(){
+    //         const querySnapshot = await getDocs(homeColRef);
+    //         console.log("lllllll",querySnapshot);
+    //         let liste =[]
+    //             querySnapshot.forEach((doc) => {
+    //                 let listedata = doc.data()
+    //                 listedata.id = doc.id;
+    //                 liste.push(listedata);
+    //             console.log(doc.id, " => ", doc.data());
+    //         }) 
+    //         this.liste = liste 
+    // }
 
 }
 </script>

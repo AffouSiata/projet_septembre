@@ -11,6 +11,7 @@ import location from '../views/location.vue'
 import profile from '../views/profile.vue'
 import modifie from '../views/modifie.vue'
 import essaie from '../views/essaie.vue'
+import modalsup from '../views/modalSup.vue'
 const routes = [
   {
     path: '/admin',
@@ -52,6 +53,11 @@ const routes = [
     path: '/location',
     name: 'location',
     component: location,
+  },
+  {
+    path: '/modalsup',
+    name: 'modalsup',
+    component: modalsup,
   },
   {
     path: '/profile',

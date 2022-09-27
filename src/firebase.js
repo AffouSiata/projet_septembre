@@ -19,5 +19,7 @@ const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 export const auth=getAuth(app)
 export const homeColRef = collection(db, "Immo");
+export const homeColRefs = collection(db, "utilisateur");
 export const storage = getStorage(app)
-export default homeColRef;
+// export default homeColRef;
+export default {homeColRef,homeColRefs};

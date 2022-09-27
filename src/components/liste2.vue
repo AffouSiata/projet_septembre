@@ -3,7 +3,7 @@
     <div>
         <modalComponent :modalite ="modalite" :modale="modale"/>
         <div class="clique">
-            <button @click="modale">Ajouter une maison</button>
+            <button @click="modale" class="ajout">Ajouter une maison</button>
         </div>
         <h2>LA LISTE DES BIENS POSTÉS</h2>
         <div class="letableau" ref="tableau">
@@ -17,6 +17,7 @@
                         <th scope="col">Pays</th>
                         <th scope="col">Ville</th>
                         <th scope="col">Actions</th>
+                       
                     </tr>
                 </thead>
                 <tbody>
@@ -28,13 +29,36 @@
                         <td>{{doc.pays}}</td>
                         <td>{{doc.ville}}</td>
                        <td class="lien">
-                            <router-link to="`/modifie/${doc.id}`"><i class="fa-sharp fa-solid fa-pen-to-square"></i></router-link>
+                            <router-link to=""><i class="fa-sharp fa-solid fa-pen-to-square"></i></router-link>
                             <!-- <router-link to=""><i class="fa-solid fa-trash" ></i></router-link> -->
-                            <span @click.prevent="supprime(doc.id)"><i class="fa-solid fa-trash" ></i></span>
+                            <router-link to=""><i class="fa-solid fa-trash" @click="supprime(doc.id)"  data-mdb-toggle="modal" data-mdb-target="#exampleModal"></i></router-link> 
+                            <!-- <span ><i class="fa-solid fa-trash" ></i></span> -->
                         </td>
                     </tr>   
                 </tbody>
             </table>
+        </div>
+        <div>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Supprimer un donné</h5>
+                        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="err">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <p>Cette action entraîne la suppression définitive de cette  donnée.</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btns" data-mdb-dismiss="modal">Annuler</button>
+                        <button type="button" @click.prevent="suppresse" class="btne">Supprimer</button>
+                    </div>
+                    </div>
+                </div>
+            </div> 
         </div>
         
        
@@ -57,6 +81,7 @@ export default {
         return{
             modalite:false,
             liste:[],
+            id:""
             
         }
     },
@@ -86,7 +111,7 @@ export default {
             console.log('element',element);
             addDoc(homeColRef,element).then((adm)=>{
                 console.log("res",adm);
-                this.$router.replace('/admin')
+                // this.$router.go()
             })
             .catch((error)=>{
                 console.log("rdsxfxdf",error);
@@ -94,35 +119,40 @@ export default {
             })
         },
         async supprime(docId){
-            let datasupp = doc(homeColRef,docId)
-            await deleteDoc(datasupp) 
-            alert("City deleted successully!");
+            this.id=docId
+            // alert("City deleted successully!");
             // this.$router.go();
 
         },
+        async suppresse(){
+             let datasupp = doc(homeColRef,this.id)
+            console.log("sip",this.id);
+             await deleteDoc(datasupp) 
+             this.$router.go()
+        }
        
     },
         
-    async uploadImage(e){
-           let touslesimages =[];
-           Object.values(e.target.files).forEach((elem)=>{
-            console.log("images",elem.name);
-            const file = elem
-            const metadata ={
-                contentType:"image/jpeg"
-            }
-            const storageRef = ref(storage,"mesImages/" + file.name)
-            touslesimages.push(uploadBytes(storageRef, file , metadata)
-            .then(uploadResult =>{
-                return getDownloadURL(uploadResult.ref)
-            })
-            )
-           })
-           const images = await Promise.all(touslesimages)
-           this.image =images
-           console.log("azertyuiolkjhgfds",this.image);
+    // async uploadImage(e){
+    //        let touslesimages =[];
+    //        Object.values(e.target.files).forEach((elem)=>{
+    //         console.log("images",elem.name);
+    //         const file = elem
+    //         const metadata ={
+    //             contentType:"image/jpeg"
+    //         }
+    //         const storageRef = ref(storage,"images/" + file.name)
+    //         touslesimages.push(uploadBytes(storageRef, file , metadata)
+    //         .then(uploadResult =>{
+    //             return getDownloadURL(uploadResult.ref)
+    //         })
+    //         )
+    //        })
+    //        const images = await Promise.all(touslesimages)
+    //        this.image =images
+    //        console.log("azertyuiolkjhgfds",this.image);
 
-    },
+    // },
     async mounted(){
             const querySnapshot = await getDocs(homeColRef);
             console.log("lllllll",querySnapshot);
@@ -134,6 +164,7 @@ export default {
                 console.log(doc.id, " => ", doc.data());
             }) 
             this.liste = liste 
+            console.log("ellleee",liste);
 
 
 
@@ -159,7 +190,7 @@ export default {
         font-size: 20px;
         font-weight: bold;
     }
-    button:hover{
+    button.ajout:hover{
         color: blueviolet;
         border: 2px solid blueviolet;
         background-color: #fff;
@@ -206,6 +237,38 @@ export default {
     }
     .fa-trash{
         color: red;
+    }
+    .btns{
+        background-color: rgb(240, 236, 236);
+        padding: 10px;
+        border: none;
+        color: #000;
+        border-radius: 10px;
+    }
+    .btne{
+        background-color: red;
+        padding: 10px;
+        border: none;
+        color: #fff;
+        border-radius: 10px;
+    }
+    .err{
+        width: 43vh;
+        display: flex;
+        padding: 10px 0px 0 10px;
+        border: 1px solid rgb(224, 224, 230);
+        height: 60px;
+        background-color: rgb(239, 148, 148);
+        margin-right: 15px;
+        border-radius: 10px;
+    }
+    .err i{
+       color: red; 
+       margin-right: 15px;
+    }
+    .err p{
+        font-size: 14px;
+        color: #fff;
     }
 
 </style>
