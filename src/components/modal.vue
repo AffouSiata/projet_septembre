@@ -5,8 +5,8 @@
                 <form action="">
                     <div class="formes">
                         <select name="" id="" v-model="cate">
-                            <option value="For Rent">For Rent</option>
-                            <option value="For Sale">For Sale</option>
+                            <option value="A louer">A louer</option>
+                            <option value="A vendre">A vendre</option>
                         </select>
                         <input type="file" @change="uploadImage" multiple>
                         <input type="text" placeholder="Nom  du bien" v-model="nom">
@@ -34,9 +34,9 @@
 </template>
 
 <script>
-import {homeColRef,storage} from '../firebase' 
-import {addDoc, getDocs} from "firebase/firestore"
-import {ref, uploadBytesResumable, getDownloadURL, uploadBytes } from "firebase/storage";
+import {homeColRef,storage} from '../firebase'
+import {addDoc} from "firebase/firestore"
+import {ref, getDownloadURL, uploadBytes } from "firebase/storage";
 export default {
     name:"modalComponent",
     props:["modalite","modale"],
@@ -78,20 +78,18 @@ export default {
             }
 
             console.log('element',element);
-            // addDoc(homeColRef,element).then((adm)=>{
-            //     console.log("res",adm);
-            //     this.$router.go()
-            // })
-            // .catch((error)=>{
-            //     console.log("rdsxfxdf",error);
-            //     console.log("vous avez mal renseignez vos données");
-            // })
+            addDoc(homeColRef,element).then((adm)=>{
+                console.log("res",adm);
+                this.$router.go()
+            })
+            .catch((error)=>{
+                console.log("rdsxfxdf",error);
+                console.log("vous avez mal renseignez vos données");
+            })
         },
 
-    },
-        
-    async uploadImage(e){
-        console.log('xgkxngw',e);
+
+        async uploadImage(e){
            let touslesimages =[];
            Object.values(e.target.files).forEach((elem)=>{
             console.log("images",elem.name);
@@ -99,19 +97,23 @@ export default {
             const metadata ={
                 contentType:"image/jpeg"
             }
-            const storageRef = ref(storage,"mesImages/" + file.name)
+            const storageRef = ref(storage, "mesImages/" + file.name)
             touslesimages.push(uploadBytes(storageRef, file , metadata)
             .then(uploadResult =>{
                 return getDownloadURL(uploadResult.ref)
             })
             )
            })
-           const images = await Promise.all(touslesimages)
-           console.log(images);
-           this.image =images
+           const timages = await Promise.all(touslesimages)
+           console.log(timages);
+           this.image =timages
            console.log("azertyuiolkjhgfds",this.image);
 
+        },
+
     },
+        
+   
     // async mounted(){
     //         const querySnapshot = await getDocs(homeColRef);
     //         console.log("lllllll",querySnapshot);

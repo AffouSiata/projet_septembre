@@ -72,22 +72,32 @@ export default {
 
                 function MesErreur(erreur){
                     document.querySelector(".error").innerHTML = erreur;
-                        if (errorCode === 'auth/wrong-password') {
+                        if (erreur.code === 'auth/wrong-password') {
                             MesErreur("Mauvais mot de passe.");
                             return false;
                         } 
-                        if (errorCode === 'auth/email-already-in-use') {
+                        if (erreur.code === 'auth/email-already-in-use') {
                             MesErreur("l'email existe déja.");
                             return false;
                         }
+                        if (erreur.code === 'auth/wrong-password') {
+                            MesErreur("Mauvais mot de passe.");
+                            return false;
+                        }
+                       
                           
 
                 }
 
                 signInWithEmailAndPassword(auth, this.email, this.password)
-                .then((user)=>{
-
+                .then((user)=>{ 
                     this.$router.replace('/');
+                    if(this.email == "adminaffou@gmail.com" && this.password == "Guervar51&"){
+                        this.$router.replace('/admin');
+                    }
+                    else{
+                        this.$router.replace('/');
+                    }
                 })
                 .catch((e)=>{
                     MesErreur(e)

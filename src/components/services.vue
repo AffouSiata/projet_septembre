@@ -7,20 +7,17 @@
                     <div class="service1">
                         <img src="../assets/bac3.jpg" alt="">
                             <div class="info">
-                                <a href="/achat">Achat</a>
+                                <router-link to="/achat">Achat</router-link>
                             </div>
                     </div>
                     <div class="service1">
                         <div class="achat">
                             <img src="../assets/bac1.jpg" alt="">
                             <div class="info">
-                                <a href="/location">Location</a>
+                                <router-link to="/location">Location</router-link>
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="service2">
-
-                    </div> -->
                 </div>
            </div>
         </div>

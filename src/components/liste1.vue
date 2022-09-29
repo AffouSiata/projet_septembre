@@ -24,7 +24,7 @@
                         <td>{{doc.email}}</td>
                         <td>{{doc.numero}}</td>
                         <td class="lien">
-                            <router-link to=""><i class="fa-solid fa-trash" @click="supmodale"  data-mdb-toggle="modal" data-mdb-target="#exampleModal"></i></router-link> 
+                            <router-link to=""><i class="fa-solid fa-trash" @click="supmodale(doc.id)"  data-mdb-toggle="modal" data-mdb-target="#exampleModal"></i></router-link> 
                         </td>
                     </tr>    
                 </tbody>
@@ -66,15 +66,20 @@ export default {
     data(){
         return{
             mesliste:[],
-            aucun:""
+            aucun:"",
+            id:""
         }
     },
     methods:{
-        async suppression(docId){
-            console.log(docId);
-            let supp = doc(homeColRefs,docId)
-            console.log("suppression",datasupp);
+        async supmodale(docId){
+            this.id=docId
+
+        },
+        async suppression(){
+            let supp = doc(homeColRefs,this.id)
+            console.log("suppression",supp);
             await deleteDoc(supp) 
+            this.$router.go()
 
         },
 

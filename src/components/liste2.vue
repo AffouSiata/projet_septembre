@@ -2,6 +2,7 @@
     <!-- <div class="espace"></div> -->
     <div>
         <modalComponent :modalite ="modalite" :modale="modale"/>
+        <modifieComponent :mod ="mod" :modification="modification" :id="id"  :user="user"/>
         <div class="clique">
             <button @click="modale" class="ajout">Ajouter une maison</button>
         </div>
@@ -22,14 +23,14 @@
                 </thead>
                 <tbody>
                     <tr v-for="doc in liste" :key="doc.id">
-                        <td class="images"><img :src="doc.images[0]" alt=""></td>
+                        <td class="images"><img :src="doc.images" alt=""></td>
                         <td>{{doc.nom}}</td>
                         <td>{{doc.cate}}</td>
-                        <td>{{doc.prix}}</td>
+                        <td>{{doc.prix}} FCFA</td>
                         <td>{{doc.pays}}</td>
                         <td>{{doc.ville}}</td>
                        <td class="lien">
-                            <router-link to=""><i class="fa-sharp fa-solid fa-pen-to-square"></i></router-link>
+                            <router-link to=""><i class="fa-sharp fa-solid fa-pen-to-square" @click="modification(doc.id)"></i></router-link>
                             <!-- <router-link to=""><i class="fa-solid fa-trash" ></i></router-link> -->
                             <router-link to=""><i class="fa-solid fa-trash" @click="supprime(doc.id)"  data-mdb-toggle="modal" data-mdb-target="#exampleModal"></i></router-link> 
                             <!-- <span ><i class="fa-solid fa-trash" ></i></span> -->
@@ -67,21 +68,26 @@
 </template>
 
 <script>
+import modifieComponent from '../components/modalModi.vue'
+import {homeColRef,storage} from '../firebase'
 import modalComponent from '../components/modal.vue'
-import {homeColRef,storage} from '../firebase' 
-import {addDoc, getDocs,doc, deleteDoc} from "firebase/firestore"
-import {ref, uploadBytesResumable, getDownloadURL, uploadBytes } from "firebase/storage";
+import {addDoc, getDocs,getDoc,doc, deleteDoc} from "firebase/firestore"
+
+
 export default {
     name:"liste2Component",
     props:[],
     components:{
-        modalComponent
+        modalComponent,
+        modifieComponent
     },
     data(){
         return{
             modalite:false,
+            mod:false,
             liste:[],
-            id:""
+            id:"",
+            user:""
             
         }
     },
@@ -90,6 +96,7 @@ export default {
         modale(){
             this.modalite = !this.modalite
         },
+       
        
         adminstrateur(){
             let element={
@@ -129,6 +136,18 @@ export default {
             console.log("sip",this.id);
              await deleteDoc(datasupp) 
              this.$router.go()
+        },
+        async modification(docId){
+            this.mod = !this.mod
+            this.id =docId
+            console.log("recccc",this.id);
+            const docRef = await doc(homeColRef,this.id);
+            console.log("redddddddd",docRef);
+            const docSnap = await getDoc(docRef);
+            this.user = docSnap.data()
+            console.log("ffff",docSnap.data());
+           
+
         }
        
     },
@@ -155,16 +174,15 @@ export default {
     // },
     async mounted(){
             const querySnapshot = await getDocs(homeColRef);
-            console.log("lllllll",querySnapshot);
             let liste =[]
                 querySnapshot.forEach((doc) => {
                     let listedata = doc.data()
                     listedata.id = doc.id;
                     liste.push(listedata);
-                console.log(doc.id, " => ", doc.data());
+                // console.log(doc.id, " => ", doc.data());
             }) 
             this.liste = liste 
-            console.log("ellleee",liste);
+            // console.log("ellleee",liste);
 
 
 

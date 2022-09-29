@@ -2,13 +2,13 @@
     <div class="location">
         <navbarComponent/>
     </div>
-     <div class="contenu">
-         <div class="element">
+    <div class="contenu">
+        <div class="element">
              <div class="villa" v-for="doc in local" :key="doc.id">
                  <div class="villa1">
                      <img :src="doc.images[0]" alt="">
                      <div class="col_rent">{{doc.cate}}</div> 
-                     <div class="price">{{doc.prix}} USD</div>
+                     <div class="price">{{doc.prix}} FCFA</div>
                  </div>
                  <div class="villa2">
                      <h2>{{doc.nom}}</h2>
@@ -26,9 +26,25 @@
                     </div>
                  </div>
              </div>
-         </div>
-         {{id}}
-     </div>
+        </div>
+    </div>
+    <div class="pagination">
+        <nav aria-label="...">
+            <ul class="pagination pagination-circle">
+                <li class="page-item">
+                <a class="page-link">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item active" aria-current="page">
+                <a class="page-link" href="#">2 <span class="visually-hidden">(current)</span></a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
     <footerComponent/>
     
  </template>
@@ -57,7 +73,7 @@ import footerComponent from '../components/footer.vue'
 
     },
      async mounted(){
-         const q = query(homeColRef, where("cate", "==", "For Rent"));
+         const q = query(homeColRef, where("cate", "==", "A louer"));
               console.log("ddddd",q);
               const snapSnapshot = await getDocs(q);
               let local = [];
@@ -202,5 +218,10 @@ button:hover{
     color: blueviolet;
 
 } 
+.pagination{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
  
  </style>

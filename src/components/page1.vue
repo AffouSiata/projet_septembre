@@ -25,7 +25,7 @@
                         <div class="villa1" style="position:relative">
                             <img src="../assets/appart1.jpg" alt="">
                                 <div class="col_sale">A Vendre</div>
-                                <div class="price">2000 USD</div>
+                                <div class="price">2000 FCFA</div>
                         </div>
                         <div class="villa2">
                             <h2>Appartement</h2>
@@ -41,7 +41,7 @@
                         <div class="villa1" style="position:relative">
                             <img src="../assets/villa1.jpg" alt="">
                                 <div class="col_rent">A Louer</div>
-                                <div class="price">25000 USD</div>
+                                <div class="price">25000 FCFA</div>
                         </div>
                         <div class="villa2">
                             <h2>Villa</h2>
@@ -57,7 +57,7 @@
                         <div class="villa1" style="position:relative">
                             <img src="../assets/mai1.jpg" alt="">
                                 <div class="col_sale">A Vendre</div>
-                                <div class="price">4000 USD</div>
+                                <div class="price">4000 FCFA</div>
                         </div>
                         <div class="villa2">
                             <h2>Maison</h2>
@@ -73,7 +73,7 @@
                         <div class="villa1" style="position:relative">
                             <img src="../assets/duplex1.jpg" alt="">
                                 <div class="col_rent">A Louer</div>
-                                <div class="price">6000 USD</div>
+                                <div class="price">6000 FCFA</div>
                         </div>
                         <div class="villa2">
                             <h2>Duplex</h2>
@@ -89,7 +89,7 @@
                         <div class="villa1" style="position:relative">
                             <img src="../assets/appart2.jpg" alt="">
                                 <div class="col_sale">A Vendre</div>
-                                <div class="price">1000 USD</div>
+                                <div class="price">1000 FCFA</div>
                         </div>
                         <div class="villa2">
                             <h2>Appartement</h2>
@@ -105,7 +105,7 @@
                         <div class="villa1" style="position:relative">
                             <img src="../assets/duplex.jpg" alt="">
                                 <div class="col_rent">A Louer</div>
-                                <div class="price">3000 USD</div>
+                                <div class="price">3000 FCFA</div>
                         </div>
                         <div class="villa2">
                             <h2>Duplex</h2>
@@ -121,7 +121,7 @@
                         <div class="villa1" style="position:relative">
                             <img src="../assets/villa2.jpg" alt="">
                                 <div class="col_sale">A Vendre</div>
-                                <div class="price">1200 USD</div>
+                                <div class="price">1200 FCFA</div>
                         </div>
                         <div class="villa2">
                             <h2>Maison</h2>
@@ -137,7 +137,7 @@
                         <div class="villa1" style="position:relative">
                             <img src="../assets/mai2.jpg" alt=""> 
                                 <div class="col_rent">A Louer</div>
-                                <div class="price">1800 USD</div>
+                                <div class="price">1800 FCFA</div>
                         </div>
                         <div class="villa2">
                             <h2>Villa</h2>

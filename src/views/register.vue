@@ -115,7 +115,8 @@ export default {
                         setDoc(doc(homeColRefs,user.user.uid),{
                             nom: this.nom,
                             prenom: this.prenom,
-                            numero:this.numero
+                            numero:this.numero,
+                            email:this.email
                         })
                         .then(()=>{
                             console.log("uesr enregistrer");

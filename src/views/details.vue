@@ -13,6 +13,31 @@
                 </div>
             </div>
         </div>
+        <!-- <div id="carouselExampleInterval" class="carousel slide" data-mdb-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active" data-mdb-interval="10000">
+               <img src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp" class="d-block w-100" alt="Wild Landscape"/> 
+             <img :src="homedocSnap.images" alt="" class="d-block w-100">
+            </div>
+            <div class="carousel-item" data-mdb-interval="2000">
+               <img src="https://mdbcdn.b-cdn.net/img/new/slides/042.webp" class="d-block w-100" alt="Camera"/>
+               <img :src="homedocSnap.images" alt="" class="d-block w-100">
+            </div>
+            <div class="carousel-item">
+               <img src="https://mdbcdn.b-cdn.net/img/new/slides/043.webp" class="d-block w-100" alt="Exotic Fruits"/>
+              <img :src="homedocSnap.images" alt="" class="d-block w-100">
+            </div>
+          </div>
+          <button class="carousel-control-prev" data-mdb-target="#carouselExampleInterval" type="button" data-mdb-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" data-mdb-target="#carouselExampleInterval" type="button" data-mdb-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>  -->
+
         <!-- <h1 style="text-align:center"></h1> -->
         <div class="detail">
             <div class="detail1">
@@ -53,7 +78,7 @@
                   </div>
                   <div class="fiche11">
                     <span>Prix:</span>  
-                    <span class="bien1"> {{homedocSnap.prix}} USD</span> 
+                    <span class="bien1"> {{homedocSnap.prix}} FCFA</span> 
                   </div>
                  
                 </div>
@@ -82,65 +107,6 @@
                 </div>
              </div>
             </div>
-        </div>
-        <div class="autre-associe">
-          <h1>Découvrez plus d'annonces dans la même ville</h1>
-          <div class="element">
-            
-            <div class="villa" v-for="doc in snape" :key="doc.id">
-              <div class="villa1">
-                <img :src="doc.images" alt="">
-                <div class="col_rent">{{doc.cate}}</div> 
-                <div class="price">{{doc.prix}} USD</div>
-              </div>
-              <div class="villa2">
-                <h2>{{doc.nom}}</h2>
-                <p>{{doc.message}}</p>
-                <div class="villa21">
-                  <i class="fa fa-bed"><span> Bed:{{doc.chambre}}</span></i>
-                  <i class="fa fa-shower"><span> Bath:{{doc.bain}}</span></i>
-                  <i class="fa fa-th"><span>{{doc.superfice}} SF </span></i>
-                                
-                </div>
-              </div>
-            </div> 
-            
-            
-            <!-- <div class="villa" >
-              <div class="villa1">
-                <img src="../assets/maison1.jpg" alt="">
-                <div class="col_rent">For Sale</div> 
-                <div class="price">112345 USD</div>
-              </div>
-              <div class="villa2">
-                <h2>Apppartement</h2>
-                <p>sgvhdfhdfhudhiufhiduhgudhjbfghujdhiufvdhujfvhjdhfudhfhu</p>
-                <div class="villa21">
-                  <i class="fa fa-bed"><span> Bed:7</span></i>
-                  <i class="fa fa-shower"><span> Bath: 7 </span></i>
-                  <i class="fa fa-th"><span>123456 SF </span></i>
-                                
-                </div>
-              </div>
-            </div>  -->
-            <!-- <div class="villa" >
-              <div class="villa1">
-                <img src="../assets/maison1.jpg" alt="">
-                <div class="col_rent">For Sale</div> 
-                <div class="price">112345 USD</div>
-              </div>
-              <div class="villa2">
-                <h2>Apppartement</h2>
-                <p>sgvhdfhdfhudhiufhiduhgudhjbfghujdhiufvdhujfvhjdhfudhfhu</p>
-                <div class="villa21">
-                  <i class="fa fa-bed"><span> Bed:7</span></i>
-                  <i class="fa fa-shower"><span> Bath: 7 </span></i>
-                  <i class="fa fa-th"><span>123456 SF </span></i>
-                                
-                </div>
-              </div>
-            </div>       -->
-          </div>
         </div>
         <div class="clan">
           <h1>Réservation</h1>
@@ -175,6 +141,84 @@
           </div>
               <!-- <div class="numero-whathap"></div> -->
         </div>
+
+
+        <div class="autre-associe">
+          <h1>Découvrez plus d'annonces dans la même ville</h1>
+          <div class="element">
+            
+            <!-- <div class="villa" v-for="doc in snape" :key="doc.id">
+              <div class="villa1">
+                <img :src="doc.images" alt="">
+                <div class="col_rent">{{doc.cate}}</div> 
+                <div class="price">{{doc.prix}} FCFA</div>
+              </div>
+              <div class="villa2">
+                <h2>{{doc.nom}}</h2>
+                <p>{{doc.message}}</p>
+                <div class="villa21">
+                  <i class="fa fa-bed"><span> Bed:{{doc.chambre}}</span></i>
+                  <i class="fa fa-shower"><span> Bath:{{doc.bain}}</span></i>
+                  <i class="fa fa-th"><span>{{doc.superfice}} Sp </span></i>
+                                
+                </div>
+              </div>
+            </div>  -->
+            
+            
+             <div class="villa" >
+              <div class="villa1">
+                <img src="../assets/maison1.jpg" alt="">
+                <div class="col_rent">For Sale</div> 
+                <div class="price">112345 FCFA</div>
+              </div>
+              <div class="villa2">
+                <h2>Apppartement</h2>
+                <p>sgvhdfhdfhudhiufhiduhgudhjbfghujdhiufvdhujfvhjdhfudhfhu</p>
+                <div class="villa21">
+                  <i class="fa fa-bed"><span> Bed:7</span></i>
+                  <i class="fa fa-shower"><span> Bath: 7 </span></i>
+                  <i class="fa fa-th"><span>123456 SF </span></i>
+                                
+                </div>
+              </div>
+            </div>  
+             <div class="villa" >
+              <div class="villa1">
+                <img src="../assets/maison1.jpg" alt="">
+                <div class="col_rent">For Sale</div> 
+                <div class="price">112345 FCFA</div>
+              </div>
+              <div class="villa2">
+                <h2>Apppartement</h2>
+                <p>sgvhdfhdfhudhiufhiduhgudhjbfghujdhiufvdhujfvhjdhfudhfhu</p>
+                <div class="villa21">
+                  <i class="fa fa-bed"><span> Bed:7</span></i>
+                  <i class="fa fa-shower"><span> Bath: 7 </span></i>
+                  <i class="fa fa-th"><span>123456 SF </span></i>
+                                
+                </div>
+              </div>
+            </div>   
+            <div class="villa" >
+              <div class="villa1">
+                <img src="../assets/maison1.jpg" alt="">
+                <div class="col_rent">For Sale</div> 
+                <div class="price">112345 FCFA</div>
+              </div>
+              <div class="villa2">
+                <h2>Apppartement</h2>
+                <p>sgvhdfhdfhudhiufhiduhgudhjbfghujdhiufvdhujfvhjdhfudhfhu</p>
+                <div class="villa21">
+                  <i class="fa fa-bed"><span> Bed:7</span></i>
+                  <i class="fa fa-shower"><span> Bath: 7 </span></i>
+                  <i class="fa fa-th"><span>123456 SF </span></i>
+                                
+                </div>
+              </div>
+            </div>       
+          </div>
+        </div>
         <footerComponent/>
       </div>
 </template>
@@ -199,16 +243,17 @@ import footerComponent from '../components/footer.vue'
     },
     props:['id'],
     methods: {
-      
+     
         
     },
+   
     async mounted() {
         const docRef = doc(homeColRef, this.id);
         const docSnap = await getDoc(docRef);
-
-        if (docSnap.exists()) {
+        // console.log("dgfhhdgfgh",homedocSnap.images);
+        if (docSnap.exists()){
           this.homedocSnap= docSnap.data()
-        //  console.log("Document data:", homedocSnap);
+         console.log("Document data:", this.homedocSnap);
         } 
         else {
           console.log("No such document!");
@@ -227,6 +272,7 @@ import footerComponent from '../components/footer.vue'
              console.log("pppppppp",doc.id, " => ", homesnapedata);
         });
         this.snape = snape;
+       
 
     },
     
@@ -274,7 +320,7 @@ import footerComponent from '../components/footer.vue'
     width: 100%;
     height: 90px;
     background-color: black;
-    z-index: 1;
+    z-index:1 ;
    
   }
   .des{
@@ -293,13 +339,14 @@ import footerComponent from '../components/footer.vue'
   
   }
   .des1 img{
+    margin-top:-20px;
     width: 100%;
-    height: 400px;
+    height: 450px;
     object-fit: cover;
   }
   .des2{
     /* border:1px solid blue; */
-    width: 70%;
+    width: 60%;
     height: 200px;
     margin-top: 40px;
     display: flex;
@@ -438,15 +485,16 @@ import footerComponent from '../components/footer.vue'
   }
  .autre-associe{
    width: 100%;
-   height: 180vh;
+   height: 60vh;
    display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    margin-top: -20%;
+    /* margin-top: -20%; */
  }
  h1{
    padding-top: 50px;
+   text-transform: uppercase;
  }
  .element{
         width: 70vw;
@@ -564,13 +612,14 @@ import footerComponent from '../components/footer.vue'
         height: 320px;
         width: 600px;
         border-radius: 10px;
-        z-index: 10; 
+
       
     }
     form{
         height: 550px;
         margin:  auto;
         text-align: center;
+      
 
     }
     .formes select{
@@ -673,6 +722,9 @@ import footerComponent from '../components/footer.vue'
     .part2:hover,.part1:hover{
         outline:.2rem solid blueviolet;
         outline-offset: 0rem;
+    }
+    .carousel{
+      position: relative;
     }
     
 </style>

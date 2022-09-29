@@ -13,7 +13,6 @@
                 <div class="villa1">
                     <img :src="doc.images[0]" alt="">
                     <div class="col_rent">{{doc.cate}}</div> 
-                    <div class="price">{{doc.prix}} USD</div>
                 </div>
                 <div class="villa2">
                     <h2>{{doc.nom}}</h2>
@@ -30,6 +29,23 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="pagination">
+        <nav aria-label="...">
+            <ul class="pagination pagination-circle">
+                <li class="page-item">
+                <a class="page-link">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item active" aria-current="page">
+                <a class="page-link" href="#">2 <span class="visually-hidden">(current)</span></a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
     </div>
     <footerComponent/>
 </template>
@@ -59,7 +75,7 @@ export default {
 
     },
     async mounted(){
-        const q = query(homeColRef, where("cate", "==", "For Sale"));
+        const q = query(homeColRef, where("cate", "==", "A vendre"));
              console.log("ddddd",q);
              const snapSnapshot = await getDocs(q);
              console.log("ta",snapSnapshot);
@@ -105,7 +121,7 @@ align-items: center;
 .element{
 
 width: 70vw;
-height: 140vh;
+height: 100vh;
 display: grid;
 grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
 padding: 20px;
@@ -214,6 +230,11 @@ button:hover{
     color: blueviolet;
 
 } 
+.pagination{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
 .footer{
     bottom: 0;
 }

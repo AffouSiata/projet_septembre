@@ -8,7 +8,7 @@
             </div>
             <ul class="nav-links">
                 <li>
-                    <a href="#" class="active">
+                    <a href="#">
                         <i class='bx bx-grid-alt' ></i>
                         <span class="links_name">Menu Admin</span>
                     </a>
@@ -25,16 +25,16 @@
                         <span class="links_name"  @click="mesliste ='liste1Component'"> Liste Client</span>
                     </a>
                 </li>
-                <li>
+                <!-- <li>
                     <a href="#">
                         <i class='bx bx-cog' ></i>
                         <span class="links_name">Parametère</span>
                     </a>
-                </li>
+                </li> -->
                     <li class="log_out">
                     <a href="#">
                         <i class='bx bx-log-out'></i>
-                        <span class="links_name">Se déconnecter</span>
+                        <span class="links_name" @click="logout()">Se déconnecter</span>
                     </a>
                 </li>
             </ul>
@@ -70,6 +70,7 @@
 <script>
 import liste1Component from '../components/liste1.vue'
 import liste2Component from '../components/liste2.vue'
+import {auth} from '../firebase';
 
 
 
@@ -93,7 +94,16 @@ import liste2Component from '../components/liste2.vue'
                 sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
                 }else
                 sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
-            }   ,
+            },
+            async logout(){
+              await auth.signOut()
+                .then(() => {
+                    this.$router.replace('/');    
+                })
+                .catch((err) =>{
+                    console.log(err);
+                });
+            }
 
 
 
@@ -108,7 +118,7 @@ import liste2Component from '../components/liste2.vue'
 
 
 
-    .sidebar{
+  .sidebar{
   position: fixed;
   height: 100vh;
   width: 240px;
