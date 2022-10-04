@@ -30,7 +30,7 @@
             </div>
         </div>
     </div>
-    <div class="pagination">
+    <!-- <div class="pagination">
         <nav aria-label="...">
             <ul class="pagination pagination-circle">
                 <li class="page-item">
@@ -46,6 +46,11 @@
                 </li>
             </ul>
         </nav>
+    </div> -->
+    <div class="pagination">
+        <div class="precedent" >Prev</div>
+        <div class="page">Page <span class="page-num"></span></div>
+        <div class="suivant">Next</div>
     </div>
     <footerComponent/>
 </template>
@@ -61,6 +66,7 @@ export default {
         navbarComponent,
         footerComponent
     },
+
     data(){
         return{
             sale:[],
@@ -71,10 +77,21 @@ export default {
         details(id){
           console.log("monnnid",id);
           this.$router.replace(`/details/${id}`)
-        }
+        },
 
+        long(tab){
+            let i = 1
+         while (tab[i] != undefined) {
+                i++
+                
+            }
+            console.log("dwf",i);
+            return i      
+        }
+      
     },
     async mounted(){
+
         const q = query(homeColRef, where("cate", "==", "A vendre"));
              console.log("ddddd",q);
              const snapSnapshot = await getDocs(q);
@@ -95,8 +112,63 @@ export default {
                 this.aucun = "gfvghdfhdfhjdkjf"
             }
 
-             
-    }
+        let pam = document.querySelector('.element')
+        console.log("pagination",pam.length)  
+        const prev=document.querySelector(".precedent");
+        const next=document.querySelector(".suivant");
+        const page=document.querySelector(".page-num");
+        const maxItem=3;
+        let index=1;
+        const pagination=Math.ceil(pam.length/maxItem);
+        const pagine =pam.length/maxItem;
+        console.log("pppppp",pagination);
+        console.log("vvvvv",pagine);
+           
+
+        prev.addEventListener("click",function(){
+        index--;
+        check();
+        showItems();
+        })
+        next.addEventListener("click",function(){
+            index++;
+            check();
+        showItems();  
+        })
+
+        function check(){
+            if(index==pagination){
+                next.classList.add("disabled");
+            }
+            else{
+                next.classList.remove("disabled");	
+            }
+
+            if(index==1){
+                prev.classList.add("disabled");
+            }
+            else{
+                prev.classList.remove("disabled");	
+            }
+        }
+        function showItems() {
+        for(let i=0;i<pam.length; i++){
+         pam[i].classList.remove("show");
+         pam[i].classList.add("hide");
+
+
+        if(i>=(index*maxItem)-maxItem && i<index*maxItem){
+           pam[i].classList.remove("hide");
+           pam[i].classList.add("show");
+        }
+        page.innerHTML=index;
+      }
+
+          
+ }
+
+       
+    },
 }
 </script>
 
@@ -237,6 +309,41 @@ button:hover{
 }
 .footer{
     bottom: 0;
+}
+.pagination{
+    display: flex;
+    width: 100%;
+   /* border: 1px solid red; */
+   align-items: center;
+    justify-content: center;
+}
+.precedent,.suivant{
+    width: 62px;
+    height: 38px;
+    border: none;
+    background-color: rgb(23, 194, 190);
+    color: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.precedent:hover,.suivant:hover{
+    background-color:hsl(240deg 7% 97%) ; 
+    color: rgb(23, 194, 190);
+    border: 1px solid rgb(23, 194, 190);
+    cursor: pointer; 
+}
+
+.pagination .precedent.disabled,
+.pagination .suivant.disabled{
+    pointer-events: none;
+    background-color: rgb(1, 228, 224);
+
+}
+.page{
+    padding: 0 10px;
 }
  
 

@@ -3,7 +3,7 @@
         <navbarComponent/>
     </div>
     <div class="contenu">
-        <div class="element">
+        <div class="element" ref="ss">
              <div class="villa" v-for="doc in local" :key="doc.id">
                  <div class="villa1">
                      <img :src="doc.images[0]" alt="">
@@ -28,24 +28,11 @@
              </div>
         </div>
     </div>
-    <div class="pagination">
-        <nav aria-label="...">
-            <ul class="pagination pagination-circle">
-                <li class="page-item">
-                <a class="page-link">Previous</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item active" aria-current="page">
-                <a class="page-link" href="#">2 <span class="visually-hidden">(current)</span></a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                <a class="page-link" href="#">Next</a>
-                </li>
-            </ul>
-        </nav>
-    </div>
+   
     <footerComponent/>
+
+
+  
     
  </template>
  
@@ -72,7 +59,7 @@ import footerComponent from '../components/footer.vue'
         }
 
     },
-     async mounted(){
+    async mounted(){
          const q = query(homeColRef, where("cate", "==", "A louer"));
               console.log("ddddd",q);
               const snapSnapshot = await getDocs(q);
@@ -85,7 +72,8 @@ import footerComponent from '../components/footer.vue'
               console.log(doc.id, " => ", homedata);
          });
          this.local = local;
-     }
+    },
+
  }
  </script>
  

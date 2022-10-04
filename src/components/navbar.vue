@@ -13,8 +13,17 @@
                 </ul>
             </nav>
             <div class="sign">
-                        
+                <!-- <input type="checkbox" id="switch-mode" hidden>
+			    <label for="switch-mode" class="switch-mode"></label>      -->
                 <a href="/login"><i class="far fa-user"></i></a>
+                <div class="profil">
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cGVvcGxlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="profil_image" alt="">
+                    <ul class="profil-link">
+                        <li><a href="#"><i class='bx bxs-user-circle icon' ></i> Profile</a></li>
+                        <!-- <li><a href="#"><i class='bx bxs-cog' ></i> Settings</a></li> -->
+                        <li><a href="#"><i class='bx bxs-log-out-circle' ></i> Logout</a></li>
+                    </ul>
+			    </div>
             </div>
             <div class="burger">
                 <div class="line1"></div>
@@ -48,14 +57,105 @@ export default {
                     Navmenu.classList.toggle("nav-active")
               })
             })
+           
+
+            // const switchMode = document.getElementById('switch-mode');
+            // if(switchMode){
+            //     switchMode.addEventListener('change', function () {
+            //     if(this.checked) {
+            //         document.body.classList.add('dark');
+            //     } else {
+            //         document.body.classList.remove('dark');
+            //     }
+            // })
+            // }
+            const profiles = document.querySelector('.profil');
+               const imgProfile = profiles.getElementsByClassName('profil_image');
+               const dropdownProfile = profiles.querySelector('.profil-link');
+                if(imgProfile){
+
+                    imgProfile.addEventListener('click', function () {
+                        dropdownProfile.classList.toggle('show');
+                        })
+                }
+
 
 
             
-        }
+        },
+        
+        
+      
 }
 </script>
 
 <style scoped>
+.profile {
+	position: relative;
+    margin-left: 50px;
+}
+.profile img {
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	object-fit: cover;
+	cursor: pointer;
+}
+.profile .profile-link {
+	position: absolute;
+	top: calc(100% + 10px);
+	right: 0;
+	background: #fff;
+	padding: 10px 0;
+	box-shadow: 4px 4px 16px rgba(0, 0, 0, .1);
+	border-radius: 10px;
+	width: 160px;
+	opacity: 0;
+	pointer-events: none;
+	transition: all .3s ease;
+}
+.profile .profile-link.show {
+	opacity: 1;
+	pointer-events: visible;
+	top: 100%;
+}
+.profile .profile-link a {
+	padding: 10px 16px;
+	display: flex;
+	grid-gap: 10px;
+	font-size: 14px;
+	color: #000;
+	align-items: center;
+	transition: all .3s ease;
+}
+.profile .profile-link a:hover {
+	background: #F1F0F6;
+}
+
+
+.switch-mode {
+	display: block;
+	min-width: 50px;
+	height: 25px;
+	border-radius: 25px;
+	background: #F1F0F6;
+	cursor: pointer;
+	position: relative;
+}
+.switch-mode::before {
+	content: '';
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	bottom: 2px;
+	width: calc(25px - 4px);
+	background: #1775F1;
+	border-radius: 50%;
+	transition: all .3s ease;
+}
+#switch-mode:checked + .switch-mode::before {
+	left: calc(100% - (25px - 4px) - 2px);
+}
 
 
 .contener{
@@ -64,7 +164,7 @@ export default {
         width: 100%;
         box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(1, 5, 9, 0.35) 0px -2px 6px 0px inset;
         /* border: 3px solid blue; */
-        background-color: black;
+        background-color: #000;
         display: flex;
         justify-content: space-around;
         z-index: 1;
@@ -121,6 +221,8 @@ nav ul li a:hover{
 .sign{
     margin-top: 5px; 
     font-size: 40px;
+    display: flex;
+   
 }
 .sign i{
     color: blueviolet; 
