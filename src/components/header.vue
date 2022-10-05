@@ -111,18 +111,18 @@ export default {
   color: #FFF;
 }
 .next{
-    background-color: black;
-    padding: 20px;
-    height: 90px;
-    border-radius: 20px;
-    color: #FFF;
+    background-color:black;
+    padding: 10px;
+    height: 70px;
+    border-radius: 10px;
+    color: #fff;
 }
 
 .previous{
-    background-color: black;
-    padding: 20px;
-    height: 90px; 
-    border-radius: 20px;
+    background-color:black;
+    padding: 10px;
+    height: 70px;
+    border-radius: 10px;
 }
 
  .lien{

@@ -9,6 +9,7 @@
     margin: 0;
     text-decoration: none;
     box-sizing: border-box;
+    list-style-type: none;
 }
 
 </style>

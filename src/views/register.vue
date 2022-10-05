@@ -119,7 +119,7 @@ export default {
                             email:this.email
                         })
                         .then(()=>{
-                            console.log("uesr enregistrer");
+                            console.log("user enregistrer");
                         })
                     
                         this.$router.replace("/login");
