@@ -79,15 +79,15 @@ export default {
           this.$router.replace(`/details/${id}`)
         },
 
-        long(tab){
-            let i = 1
-         while (tab[i] != undefined) {
-                i++
+        // long(tab){
+        //     let i = 1
+        //  while (tab[i] != undefined) {
+        //         i++
                 
-            }
-            console.log("dwf",i);
-            return i      
-        }
+        //     }
+        //     console.log("dwf",i);
+        //     return i      
+        // }
       
     },
     async mounted(){

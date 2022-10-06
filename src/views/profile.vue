@@ -2,7 +2,7 @@
 <div class="wrapper">
     <div class="left">
         <img src="https://i.imgur.com/cMy8V5j.png" alt="user" width="100">
-        <h4>Affou Siata</h4>
+        <h4>{{homedocSnappe.nom}}</h4>
          <p>Developer Junior</p>
     </div>
     <div class="right">
@@ -11,11 +11,12 @@
             <div class="info_data">
                  <div class="data">
                     <h4>Email</h4>
-                    <p>affou@gmail.com</p>
+                    <p>{{homedocSnappe.email}}</p>
+                    {{}}
                  </div>
                  <div class="data">
                    <h4>Phone</h4>
-                    <p>0001-213-998761</p>
+                    <p>{{homedocSnappe.numero}}</p>
               </div>
             </div>
         </div>
@@ -50,29 +51,55 @@
 </template>
 
 <script>
-import { getAuth } from "firebase/auth";
+import { homeColRefs,auth} from '../firebase' 
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
 export default {
     name:"profile",
     data(){
         return{
-
+            id:"",
+            homedocSnappe:''
         }
     },
+    props:['id'],
     methods: {
         
     },
-    mounted() {
+    async mounted() {
 
-        const auth = getAuth();
-        const user = auth.currentUser;
-        if (user !== null) {
-        const nom = user.nom;
-        const prenom = user.prenom;
-        const email = user.email;
-        const photoURL = user.photoURL;
-        const emailVerified = user.emailVerified;
-        const uid = user.uid;
-        }
+        const profille = getAuth();
+           await onAuthStateChanged(profille,(user) => {
+            if (user) { 
+               this.id = user.uid;
+                console.log("zzzzzz",this.id  );
+                const docReffe =  doc(homeColRefs, this.id);
+                const docSnappe =  getDoc(docReffe)
+
+                .then(doc=>{
+                    this.homedocSnappe = doc.data()
+                    console.log("ddddt",this.homedocSnappe);
+                    console.log("edfff",this.id);
+                })
+                .catch(err=>{
+                    console.log(err);
+                })
+                // if (docSnappe.exists()){
+                // this.homedocSnappe= docSnappe
+                // console.log("Document data:", this.homedocSnappe);
+                // } 
+                // else {
+                // console.log("No such document!");
+                // }
+                this.connecte= true
+            } else {
+              
+            }
+        });
+        
+
+      
+       
         
     },
     created() {

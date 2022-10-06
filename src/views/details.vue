@@ -13,32 +13,6 @@
                 </div>
             </div>
         </div>
-        <!-- <div id="carouselExampleInterval" class="carousel slide" data-mdb-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active" data-mdb-interval="10000">
-               <img src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp" class="d-block w-100" alt="Wild Landscape"/> 
-             <img :src="homedocSnap.images" alt="" class="d-block w-100">
-            </div>
-            <div class="carousel-item" data-mdb-interval="2000">
-               <img src="https://mdbcdn.b-cdn.net/img/new/slides/042.webp" class="d-block w-100" alt="Camera"/>
-               <img :src="homedocSnap.images" alt="" class="d-block w-100">
-            </div>
-            <div class="carousel-item">
-               <img src="https://mdbcdn.b-cdn.net/img/new/slides/043.webp" class="d-block w-100" alt="Exotic Fruits"/>
-              <img :src="homedocSnap.images" alt="" class="d-block w-100">
-            </div>
-          </div>
-          <button class="carousel-control-prev" data-mdb-target="#carouselExampleInterval" type="button" data-mdb-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" data-mdb-target="#carouselExampleInterval" type="button" data-mdb-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>  -->
-
-        <!-- <h1 style="text-align:center"></h1> -->
         <div class="detail">
             <div class="detail1">
               <div class="titre">
@@ -139,7 +113,6 @@
                 </div>
             </div>
           </div>
-              <!-- <div class="numero-whathap"></div> -->
         </div>
 
 
@@ -275,42 +248,6 @@ import footerComponent from '../components/footer.vue'
        
 
     },
-    
-    
-    
-    // async mounted(){
-    //     const q = query(homeColRef, where("ville", "==", "abidjan"));
-    //          console.log("ddddd",q);
-    //          const snapSnapshot = await getDocs(q);
-    //          let snape = [];
-    //          console.log("ssssss",snapSnapshot);
-    //          snapSnapshot.forEach((doc) => {
-    //             let homesnapedata = doc.data()
-    //             homesnapedata.id = doc.id;
-    //             snape.push(homesnapedata);
-    //          console.log("pppppppp",doc.id, " => ", homesnapedata);
-    //     });
-    //     this.snape = snape;
-
-    // }
-
-
-
-
-    // async  mounted() {
-    //         let homedocSnap= docSnap.data()
-    //         const querySnapshot = await getDocs(homedocSnap);
-    //         let snape = [];
-    //         querySnapshot.forEach((doc) => {
-    //             let homesnapedata = doc.data()
-    //             homesnapedata.id = doc.id;
-    //             snape.push(homesnapedata);
-                
-           
-    //         });
-
-    //         this.snape = snape;
-    // },
 
 }
 </script>

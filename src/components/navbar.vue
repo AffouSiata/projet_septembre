@@ -20,7 +20,7 @@
                     <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cGVvcGxlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" id="images"  alt="">
                     <ul class="profile-link">
                       
-                        <li><router-link to="/profile"><i class='bx bxs-user-circle icon far' ></i> Profile</router-link></li>
+                        <li><router-link to="/profile" @click="profiles(doc.id)"><i class='bx bxs-user-circle icon far' ></i> Profile</router-link></li>
                         <li><router-link to="" @click="deconnexion"><i class='bx bxs-log-out-circle far'></i>déconnecter</router-link></li>
                     </ul>
 			    </div>
@@ -46,6 +46,11 @@ export default {
         }
     },
     methods: {
+        profiles(id){
+            console.log("monnnid",id);
+          this.$router.replace(`/profile/${id}`)
+
+        },
         async deconnexion(){
             await auth.signOut()
                 .then(() => {
@@ -63,11 +68,12 @@ export default {
                 console.log("dcfdfd",user);
             if (user) {
                 const uid = user.uid;
+                console.log("sss",uid );
                 this.connecte= true
             } else {
               
             }
-            });
+        });
     },
     setup(){
             window.addEventListener("load", ()=>{
