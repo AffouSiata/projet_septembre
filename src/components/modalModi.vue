@@ -27,7 +27,7 @@
                     <div class="botton">
                         <button @click.prevent="modifie">Envoyer</button>
                     </div>
-                    {{id}}
+
             </form>
         </div>
         
@@ -77,22 +77,7 @@ export default {
                
             }
             console.log('element',element);
-            // console.log("dfdfdfdfdf",this.user.nom );
-            // console.log(this.user.prix );
-            // console.log(this.user.cate );
-            // console.log(this.user.pays );
-            // console.log(this.user.ville );
-            // console.log(this.user.images );
-     
-      
-            // const docRef = doc(homeColRef,this.id);
-            // console.log("redddddddd",docRef);
-            // const docSnap = await getDoc(docRef);
-            // console.log("ffff",docSnap);
-            // let datasupp = doc(homeColRef,this.id)
-            // console.log("iiiii",this.id);
-            // console.log("azerty",datasupp);
-            // await setDoc(datasupp,this.id);
+
 
 
             if(element.images == ""){

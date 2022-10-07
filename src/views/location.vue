@@ -28,6 +28,11 @@
              </div>
         </div>
     </div>
+    <div class="pagination">
+        <div class="precedent" >Prev</div>
+        <div class="page">Page <span class="page-num"></span></div>
+        <div class="suivant">Next</div>
+    </div>
    
     <footerComponent/>
 
@@ -210,6 +215,44 @@ button:hover{
     display: flex;
     justify-content: center;
     margin-bottom: 30px;
+}
+.footer{
+    bottom: 0;
+}
+.pagination{
+    display: flex;
+    width: 100%;
+   /* border: 1px solid red; */
+   align-items: center;
+    justify-content: center;
+}
+.precedent,.suivant{
+    width: 62px;
+    height: 38px;
+    border: none;
+    background-color: rgb(23, 194, 190);
+    color: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.precedent:hover,.suivant:hover{
+    background-color:hsl(240deg 7% 97%) ; 
+    color: rgb(23, 194, 190);
+    border: 1px solid rgb(23, 194, 190);
+    cursor: pointer; 
+}
+
+.pagination .precedent.disabled,
+.pagination .suivant.disabled{
+    pointer-events: none;
+    background-color: rgb(1, 228, 224);
+
+}
+.page{
+    padding: 0 10px;
 }
  
  </style>

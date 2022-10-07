@@ -1,69 +1,109 @@
 <template>
-<div class="wrapper">
-    <div class="left">
-        <img src="https://i.imgur.com/cMy8V5j.png" alt="user" width="100">
-        <h4>{{homedocSnappe.nom}}</h4>
-         <p>Developer Junior</p>
-    </div>
-    <div class="right">
-        <div class="info">
-            <h3>Information</h3>
-            <div class="info_data">
-                 <div class="data">
-                    <h4>Email</h4>
-                    <p>{{homedocSnappe.email}}</p>
-                    {{}}
-                 </div>
-                 <div class="data">
-                   <h4>Phone</h4>
-                    <p>{{homedocSnappe.numero}}</p>
-              </div>
+    <div class="profi">
+        <modalmodiprofileComponent :modde ="modde" :modificationprofile="modificationprofile" :idd="idd"  :user="user"/>
+        <div class="wrapper">
+            <div class="left">
+                <!-- <img src="https://i.imgur.com/cMy8V5j.png" alt="user" width="100"> -->
+                <!-- <i class="fas fa-user-tie" ></i> -->
+                <img :src="homedocSnappe.images" id="images"  alt="">
+                <h4>{{homedocSnappe.nom}}</h4>
+                <p>Developer Junior</p>
+            </div>
+            <div class="right">
+                <div class="info">
+                    <h3>Information</h3>
+                    <div class="info_data">
+                        <div class="data">
+                        <h4>Nom</h4>
+                            <p>{{homedocSnappe.nom}}</p>
+                        </div>
+                        <div class="data">
+                        <h4>Prenom</h4>
+                            <p>{{homedocSnappe.prenom}}</p>
+                        </div>
+                    
+                    </div>
+                </div>
+                <div class="projects">
+                    <!-- <h3>Projects</h3> -->
+                    <div class="projects_data">
+                        <div class="data">
+                            <h4>Email</h4>
+                            <p>{{homedocSnappe.email}}</p>
+                            {{}}
+                        </div>
+                        <div class="data">
+                        <h4>Phone</h4>
+                            <p>{{homedocSnappe.numero}}</p>
+                        </div>
+                        <!-- <div class="data">
+                            <h4>Recent</h4>
+                            <p>Lorem ipsum dolor sit amet.</p>
+                        </div> -->
+                        <!-- <div class="data">
+                        <h4>Most Viewed</h4>
+                            <p>dolor sit amet.</p>
+                    </div> -->
+                    </div>
+                </div>
+                <div class="btne">
+                    <button class="mod" @click="modificationprofile(id)">Modifier</button>
+                    <button class="sup" @click="suppression">Supprimer</button>
+                </div>
+                <div class="social_media">
+                    <ul>
+                        <li><a href="https://www.facebook.com/campaign/landing.php?&campaign_id=1641144407&extra_1=s%7Cc%7C513002250215%7Ce%7Cfacebook%27%7C&placement=&creative=513002250215&keyword=facebook%27&partner_id=googlesem&extra_2=campaig"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="https://twitter.com/?lang=fr"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="https://www.instagram.com/?hl=fr"><i class="fab fa-instagram"></i></a></li>
+                    </ul>
+                
+                </div>
             </div>
         </div>
-      
-      <div class="projects">
-            <h3>Projects</h3>
-            <div class="projects_data">
-                 <div class="data">
-                    <h4>Recent</h4>
-                    <p>Lorem ipsum dolor sit amet.</p>
-                 </div>
-                 <div class="data">
-                   <h4>Most Viewed</h4>
-                    <p>dolor sit amet.</p>
-              </div>
-            </div>
-        </div>
-      
-        <div class="social_media">
-            <ul>
-              <li><a href="https://www.facebook.com/campaign/landing.php?&campaign_id=1641144407&extra_1=s%7Cc%7C513002250215%7Ce%7Cfacebook%27%7C&placement=&creative=513002250215&keyword=facebook%27&partner_id=googlesem&extra_2=campaig"><i class="fab fa-facebook-f"></i></a></li>
-              <li><a href="https://twitter.com/?lang=fr"><i class="fab fa-twitter"></i></a></li>
-              <li><a href="https://www.instagram.com/?hl=fr"><i class="fab fa-instagram"></i></a></li>
-          </ul>
-          <div class="btne">
-              <button class="mod">Modifier</button>
-              <button class="sup">Supprimer</button>
-          </div>
-      </div>
     </div>
-</div>
+
 </template>
 
 <script>
+import modalmodiprofileComponent from '../components/modalmodiprofile.vue'
 import { homeColRefs,auth} from '../firebase' 
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc,deleteDoc } from "firebase/firestore";
 export default {
     name:"profile",
+    components:{
+        modalmodiprofileComponent
+    },
     data(){
         return{
+            modde:false,
             id:"",
-            homedocSnappe:''
+            homedocSnappe:'',
+            user:'',
+            idd:"",
         }
     },
     props:['id'],
     methods: {
+        async modificationprofile(){
+            this.modde = !this.modde
+            console.log("recccc",this.id);
+            this.idd = this.id
+
+        const docRef = await doc(homeColRefs,this.idd);
+        console.log("redddddddd",docRef);
+        const docSnap = await getDoc(docRef);
+        this.user = docSnap.data()
+        console.log("ffff",docSnap.data());
+        
+           
+        },
+        async suppression(){
+            let datasupp = doc(homeColRefs,this.id)
+            console.log("sip",this.id);
+             await deleteDoc(datasupp) 
+             this.$router.replace('/login')
+        }
         
     },
     async mounted() {
@@ -84,13 +124,6 @@ export default {
                 .catch(err=>{
                     console.log(err);
                 })
-                // if (docSnappe.exists()){
-                // this.homedocSnappe= docSnappe
-                // console.log("Document data:", this.homedocSnappe);
-                // } 
-                // else {
-                // console.log("No such document!");
-                // }
                 this.connecte= true
             } else {
               
@@ -113,13 +146,23 @@ export default {
 </script>
 
 <style scoped>
+    .profi{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgb(222, 213, 213);
+    }
+    .fas{
+        font-size: 200px;
+        color: #000;
+    }
 
  .wrapper{
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  width: 1100px;
+  width: 900px;
   display: flex;
   box-shadow: 0 1px 20px 0 rgba(69,90,100,.08);
 }
@@ -136,7 +179,7 @@ export default {
 
 .wrapper .left img{
     height: 300px;
-    width: 300px;
+    width: 250px;
   border-radius: 5px;
   margin-bottom: 10px;
 }
@@ -151,9 +194,9 @@ export default {
 }
 
 .wrapper .right{
-  width: 65%;
+  width: 50%;
   background: #fff;
-  padding: 30px 25px;
+  padding: 30px 15px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
@@ -171,6 +214,7 @@ export default {
     color: #353c4e;
   text-transform: uppercase;
   letter-spacing: 5px;
+  text-align: center;
 }
 
 .wrapper .right .info_data,
@@ -181,7 +225,8 @@ export default {
 
 .wrapper .right .info_data .data,
 .wrapper .right .projects_data .data{
-  width: 45%;
+  width: 65%;
+  text-align:center ;
 }
 
 .wrapper .right .info_data .data h4,
@@ -197,9 +242,9 @@ export default {
   color: #919aa3;
 }
 .social_media {
-    margin-bottom: 50px;
     display: flex;
     justify-content: space-around;
+    margin-top: 50px;
 }
 
 .wrapper .social_media ul{
@@ -220,6 +265,10 @@ export default {
   color :#fff;
   display: block;
   font-size: 18px;
+}
+.btne{
+    display: flex;
+    justify-content:space-between ;
 }
 .sup{
     padding: 10px 10px;
