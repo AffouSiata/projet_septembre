@@ -148,137 +148,105 @@ export default {
     color: blueviolet;
 }
 
-/* .lien a::after {
-    content: "";
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    right: -5px;
-    bottom: -5px;
-    border-bottom: 5px solid #fff;
-    border-right: 5px dashed blueviolet;
-}
-.lien a::before {
-        content: "";
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        top: -5px;
-        left: -5px;
-        border-top: 5px solid #fff;
-        border-left: 5px dashed blueviolet;
-    } */
+
     
 .lien a:hover::before,
 .lien a:hover::after {
         width: calc(100% + 9px);
         height: calc(100% + 9px);
 }
-
-/* h5 {
-
-    animation: fadeInLeft 4s ease-in-out;
+@media (max-width:1100px){
+    .carousel-caption h5{
+        margin-top: -25%;
     }
-
-    @keyframes fadeInLeft {
-    from {
-    opacity: 0;
-    transform: translateX(600px);
+    .carousel-caption h4{
+        margin-top: -25%;
     }
-    to {
-    opacity: 1;
-    }
-} */
-
-
-/* 
-h4 {
-    color: rgb(173, 117, 226);
-    animation: fadeInRight 4s ease-in-out;
-    }
-
-    @keyframes fadeInRight {
-    from {
-    opacity: 0;
-    transform: translateX(600px);
-    }
-    to {
-    opacity: 1;
+    .carousel-caption h3{
+        margin-top: -25%;
     }
 }
-     */
-
-
-
-/* 
-h3 {
-    color: #fff;
-  animation: slideOutLeft 4s ease-in-out;
-}
-
-@keyframes slideOutLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-600px);
-  }
-  to {
-    opacity: 1;
-  }
-} */
-
-/* .para1 {
-    color:rgb(173, 117, 226) ;
-    animation: fadeInDown 4s ease-in-out;
-}
-
-@keyframes fadeInDown  {
-from {
-  opacity: 0;
-  transform: translateY(-600px);
-}
-to {
-  opacity: 1;
-}
-}
-
-.para2 {
-    color:rgb(173, 117, 226) ;
-    animation: slideOutRight 4s ease-in-out;
-}
-
-@keyframes slideOutRight  {
-from {
-  opacity: 0;
-  transform: translateX(-600px);
-}
-to {
-  opacity: 1;
-}
-}
-
-
-.para3 {
-    color:rgb(173, 117, 226) ;
-    animation: fadeInRight 4s ease-in-out;
-}
-
-@keyframes fadeInRight  {
-from {
-  opacity: 0;
-  transform: translateY(600px);
-}
-to {
-  opacity: 1;
-}
-} */
-
-
-
-
 @media (max-width:820px) {
     header{
         width:100%;
     }
     
 }
+@media (max-width:768px) {
+    header{
+        width:100%;
+    }
+    
+}
+@media (max-width:600px) {
+    .carousel-caption h5{
+        margin-top: -20%;
+        font-size: 40px;
+    }
+    .carousel-caption h4{
+        margin-top: -20%;
+        font-size: 40px;
+    }
+    .carousel-caption h3{
+        margin-top: -20%;
+        font-size: 40px;
+    }
+    .villa{
+        height: 1300px;
+    }
+    
+}
+@media (max-width:414px){
+    .carousel-caption h5{
+        font-size: 40px;
+        letter-spacing: 4;
+    }
+    .carousel-caption p{
+        font-size: 22px;
+    }
+    .carousel-caption h4{
+        font-size: 40px;
+    }
+    .carousel-caption h3{
+        font-size: 40px;
+    }
+
+}
+@media (max-width:375px){
+    .carousel-caption h5{
+        font-size: 30px;
+    }
+    .carousel-caption p{
+        font-size: 20px;
+    }
+    .carousel-caption h4{
+        font-size: 30px;
+    }
+    .carousel-caption h3{
+        font-size: 30px;
+    }
+}
+@media (max-width:320px){
+    .carousel-caption h5{
+        font-size: 30px;
+    }
+    .carousel-caption p{
+        font-size: 16px;
+    }
+    .carousel-caption h4{
+        font-size: 30px;
+    }
+    .carousel-caption h3{
+        font-size: 30px;
+    }
+    .lien a{
+        margin-top: 60px;
+        padding: 4px 20px;
+        border: 1px solid #FFF; 
+        background-color: blueviolet; 
+    }
+}
+
+
+
 </style> 

@@ -232,7 +232,7 @@ export default {
 
     .element{
         width: 70vw;
-        height: 1000px;
+        height: auto;
         display: grid;
         grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
         padding: 20px;
@@ -251,14 +251,11 @@ export default {
         border-width: 1px;
         border-style: solid;
         border-radius: 5px;
-        height: 430px;
+        height: 460px;
         margin-right: 20px;
     }
     .villa:hover{
-        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-    }
-    .villa1{
-
+        box-shadow: rgba(1,1, 1, 0.25) 0px 50px 100px -20px, rgba(1,1, 1, 0.3) 0px 30px 60px -30px, rgba(1,1, 1, 0.35) 0px -2px 6px 0px inset;
     }
     .col_rent{
         position: absolute;
@@ -267,7 +264,7 @@ export default {
         padding: 5px;
         border-radius: 5px;
         color: #fff;
-        box-shadow: 2px 2px 2px 2px rgb(79, 77, 77);
+       
     }
     .col_sale{
         position: absolute;
@@ -276,7 +273,6 @@ export default {
         padding: 5px;
         border-radius: 5px;
         color: #fff;
-        box-shadow: 2px 2px 2px 2px rgb(79, 77, 77);
     }
     .price{
         position: absolute;
@@ -306,6 +302,7 @@ export default {
         text-align: center;
     }
     .villa21{
+        margin-top: -20px;
         text-align: center;
     }
     .villa21 i{
@@ -323,22 +320,48 @@ export default {
     }
     @media (max-width:1200px) {
         .contenu{
-            height: 2100px;
+            /* height: 600px; */
+            height: auto;
         }
-        .element1{
-            margin-top: 100px;
+        .element{
+            margin-top: 40px;
         }
     }
     @media (max-width:780px) {
+
         .element{
-            height: 2000px;
+            height: auto;
             margin-top: -20px;
+            
         }
        .villa{
            height: 360px;
        }    
   
     }
+    @media (max-width:600px) {
+    .villa{
+        width: 520px;
+        height: 390px;
+        margin-left: -70px!important;
+    }  
+    }
+    @media (max-width:414px) {
+    .villa{
+        height: 390px;
+        margin-left: -30px!important;
+    }  
+    }
   
+    @media (max-width:320px){
+        h1{
+            font-size: 30px;
+        }
+        .villa{
+            height:420px;
+            margin-left: -60px!important;
+        }
+    }
+
     
 </style>

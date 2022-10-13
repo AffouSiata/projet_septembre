@@ -213,7 +213,7 @@ form h2{
 .forme-input{
     position: relative;
     background-color: rgb(23, 21, 142);
-    margin: 0px 30px 0px 0px;
+    margin: 0px 11px 0px 10px;
     border-top-left-radius:10px ;
     border-bottom-right-radius:10px ;
 }
@@ -286,12 +286,126 @@ small{
     font-weight: bold; 
     text-align: center;
 }
-@media (max-width:800px) {
-    .images{
-        display: none;
-    }
+@media (max-width:1200px) {
     .content{
-        left:13%
+        width: 48%;
+    }
+    .images{
+        display: none;  
     }
 }
+@media (max-width:1024px){
+    .entete i{
+        margin-left: 160px;
+        margin-top: -60px;
+    }
+}
+@media (max-width:800px) {
+    .images{
+        display: none;  
+    }
+    .content{
+        left: 7%;
+    }
+
+}
+@media (max-width:768px) {
+   .content{
+       width: 500px;
+       margin-left: 40px;
+   }
+
+}
+@media (max-width:414px){
+    .content{
+        width:45vh;
+        margin-left: -23px;
+    }
+    .formulaire{
+        width: 380px;
+    }
+    .forme-input{
+        display: flex;
+    }
+    .forme-input input{
+         width: 130px;
+        font-size: 16px;
+    }
+    .entete i{
+        margin-left: 123px;
+        margin-top: -60px;
+    }
+
+}
+@media (max-width:412px){
+    .content{
+        width:47vh;
+        margin-left: -20px;
+    }
+    .entete i{
+        margin-left: 123px;
+        margin-top: -60px;
+    }
+}
+@media (max-width:393px) {
+    .content{
+        width:48vh;
+        margin-left: -20px;
+    }
+    .formulaire{
+        width: 380px;
+    }
+    .forme-input{
+        display: flex;
+    }
+    .forme-input input{
+         width: 130px;
+        font-size: 16px;
+    }
+    .entete i{
+        margin-left: 105px;
+        margin-top: -60px;
+    }
+}
+@media (max-width:375px) {
+    .content{
+        width:45vh;
+        margin-left: -22px;
+    }
+    .formulaire{
+        width: 380px;
+    }
+    .forme-input{
+        display: flex;
+    }
+    .forme-input input{
+         width: 130px;
+        font-size: 16px;
+    }
+    .entete i{
+        margin-left: 105px;
+        margin-top: -60px;
+    }
+}
+@media (max-width:360px) {
+    .content{
+        width:48vh;
+        margin-left: -22px;
+    }
+    .formulaire{
+        width: 380px;
+    }
+    .forme-input{
+        display: flex;
+    }
+    .forme-input input{
+         width: 130px;
+        font-size: 16px;
+    }
+    .entete i{
+        margin-left: 90px;
+        margin-top: -60px;
+    }
+}
+
 </style>

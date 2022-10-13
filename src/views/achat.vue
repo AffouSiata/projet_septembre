@@ -9,14 +9,14 @@
                 {{aucun}}
             </div>
              <!--fin aucun bien ne s'affiche -->
-            <div class="villa" v-for="doc in sale" :key="doc.id" v-else>
+            <div class="villa" v-for="doc in sale" :key="doc.id" v-else :class="{show:previous}">
                 <div class="villa1">
                     <img :src="doc.images[0]" alt="">
                     <div class="col_rent">{{doc.cate}}</div> 
                 </div>
                 <div class="villa2">
                     <h2>{{doc.nom}}</h2>
-                    <p>{{doc.message}}</p>
+                    <p class="text">{{doc.message}}</p>
                     <div class="villa21">
                         <i class="fa fa-bed"><span> Bed:{{doc.chambre}}</span></i>
                         <i class="fa fa-shower"><span> Bath: {{doc.bain}} </span></i>
@@ -48,9 +48,9 @@
         </nav>
     </div> -->
     <div class="pagination">
-        <div class="precedent" >Prev</div>
+        <div class="precedent" :disabled="previous" >Prev</div>
         <div class="page">Page <span class="page-num"></span></div>
-        <div class="suivant">Next</div>
+        <div class="suivant" :disabled="nexxt">Next</div>
     </div>
     <footerComponent/>
 </template>
@@ -70,35 +70,89 @@ export default {
     data(){
         return{
             sale:[],
-            aucun:""
+            aucun:"",
+            previous:false,
+            nexxt:false
         }
     },
+
+
     methods:{
         details(id){
           console.log("monnnid",id);
           this.$router.replace(`/details/${id}`)
         },
 
-        // long(tab){
-        //     let i = 1
-        //  while (tab[i] != undefined) {
-        //         i++
-                
-        //     }
-        //     console.log("dwf",i);
-        //     return i      
-        // }
+         check (index,pagination){
+            const prev=document.querySelector(".precedent");
+        const next=document.querySelector(".suivant");
+            console.log('checl',pagination, index);
+            if(index==pagination){
+               this.nexxt = true
+            }
+            else{
+                this.nexxt = true
+            }
+
+            if(index==1){
+                this.previous= true
+            }
+            else{
+                this.previous= true
+            }
+        },
+        showItems(sale) {
+            console.log('xhox',sale);
+                for(let i=0;i<sale.length; i++){
+                    console.log('fqdhqg',sale[i]);
+                sale[i].classList.remove("show");
+                sale[i].classList.add("hide");
+
+
+                if(i>=(index*maxItem)-maxItem && i<index*maxItem){
+               sale[i].classList.remove("hide");
+               sale[i].classList.add("show");
+                }
+                page.innerHTML=index;
+            }
+            
+          
+        }
       
     },
+
+
+
+    setup() {
+
+   
+      
+
+      
+
+        window.onload=function(){
+            console.log('okkk');
+         
+        }
+        
+        
+    },
+
+
+   
     async mounted(){
 
-        const q = query(homeColRef, where("cate", "==", "A vendre"));
-             console.log("ddddd",q);
+
+
+      
+
+            const q = query(homeColRef, where("cate", "==", "A vendre"));
+            //  console.log("ddddd",q);
              const snapSnapshot = await getDocs(q);
-             console.log("ta",snapSnapshot);
+            //  console.log("ta",snapSnapshot);
             if(snapSnapshot.docs.length > 0){
                 let sale = [];
-                    console.log("ssssss",snapSnapshot);
+                    // console.log("ssssss",snapSnapshot);
                     snapSnapshot.forEach((doc) => {
                         let homedata = doc.data()
                         homedata.id = doc.id;
@@ -111,68 +165,63 @@ export default {
             else{
                 this.aucun = "gfvghdfhdfhjdkjf"
             }
-
-        let pam = document.querySelector('.element')
-        console.log("pagination",pam.length)  
+       
+         console.log("pagination",this.sale)  
+         let pag = this.sale
         const prev=document.querySelector(".precedent");
         const next=document.querySelector(".suivant");
         const page=document.querySelector(".page-num");
-        const maxItem=3;
+        const maxItem=4;
         let index=1;
-        const pagination=Math.ceil(pam.length/maxItem);
-        const pagine =pam.length/maxItem;
+        const pagination=Math.ceil(pag.length/maxItem);
         console.log("pppppp",pagination);
-        console.log("vvvvv",pagine);
            
 
         prev.addEventListener("click",function(){
         index--;
-        check();
-        showItems();
+        this.check(index,pagination);
+        this.showItems(pag);
         })
         next.addEventListener("click",function(){
             index++;
-            check();
-        showItems();  
+            this.check(index,pagination);
+             this.showItems(pag);
         })
 
-        function check(){
-            if(index==pagination){
-                next.classList.add("disabled");
-            }
-            else{
-                next.classList.remove("disabled");	
-            }
-
-            if(index==1){
-                prev.classList.add("disabled");
-            }
-            else{
-                prev.classList.remove("disabled");	
-            }
-        }
-        function showItems() {
-        for(let i=0;i<pam.length; i++){
-         pam[i].classList.remove("show");
-         pam[i].classList.add("hide");
-
-
-        if(i>=(index*maxItem)-maxItem && i<index*maxItem){
-           pam[i].classList.remove("hide");
-           pam[i].classList.add("show");
-        }
-        page.innerHTML=index;
-      }
-
-          
- }
+       this.check(index,pagination);
+          this.showItems(pag);
+        
 
        
     },
+    setup(){
+        let textes = document.querySelectorAll('.text')
+            console.log("ttttt",textes);
+            textes.forEach(monelment =>{
+            truncateString(monelment.innerHTML,30,monelment)
+            });
+            function truncateString(str,num,el) {
+                if (str.length <= num) {
+                    return el.innerHTML =str;
+                } else {
+                    return el.innerHTML = str.slice(0,num).concat('...')
+                }
+            } 
+    }
+    
 }
 </script>
 
 <style scoped>
+    .precedent:disabled,
+   .precedent[disabled]{
+        background-color: blueviolet;
+        color: #fff;
+        cursor: not-allowed;
+        pointer-events: all !important;
+        border: none;
+    }
+
   .achat{
         width: 100%;
         height: 90px;
@@ -192,28 +241,28 @@ align-items: center;
 
 .element{
 
-width: 70vw;
-height: 100vh;
-display: grid;
-grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
-padding: 20px;
-grid-gap:20px;
-margin-top: 90px;
+    width: 70vw;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+    padding: 20px;
+    grid-gap:20px;
+    margin-top: 90px;
 
 }
 
 .villa{
-/* width: 400px; */
-width: 100%;
-position: relative;
--webkit-transition: all 0.3s ease-in-out;
-transition: all 0.3s ease-in-out;
-border-color: #DFE6EE;
-border-width: 1px;
-border-style: solid;
-border-radius: 5px;
-height: 400px;
-margin-right: 20px;
+    /* width: 400px; */
+    width: 100%;
+    position: relative;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    border-color: #DFE6EE;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    height: 420px;
+    margin-right: 20px;
 }
 .villa:hover{
 box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
@@ -306,17 +355,13 @@ button:hover{
     display: flex;
     justify-content: center;
     margin-bottom: 30px;
+    width: 100%;
+   align-items: center;
 }
 .footer{
     bottom: 0;
 }
-.pagination{
-    display: flex;
-    width: 100%;
-   /* border: 1px solid red; */
-   align-items: center;
-    justify-content: center;
-}
+
 .precedent,.suivant{
     width: 62px;
     height: 38px;
@@ -345,6 +390,51 @@ button:hover{
 .page{
     padding: 0 10px;
 }
+.hide{
+	display: none;
+}
+.show{
+	display: block;
+	animation: show .5s ease;
+}
+@keyframes show{
+    0%{
+    	opacity:0;
+    	transform: scale(0.9);
+    }
+    100%{
+    	opacity:1;
+    	transform: scale(1);
+    }
+}
+@media (max-width:1024px) {
+    .elment{
+        height: auto;
+    }
+}
+@media (max-width:768px) {
+    .botton{
+        text-align: center;
+    }
+}
+@media (max-width:375px) {
+    .villa{
+        margin-left: -10%;
+    }
+}
+@media (max-width:414px) {
+    .villa{
+        margin-left: -13%;
+    }
+}
+@media (max-width:320px) {
+    .villa{
+        margin-left: -20%;
+    }
+}
+
+
+
  
 
 </style>

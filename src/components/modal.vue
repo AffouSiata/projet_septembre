@@ -5,8 +5,8 @@
                 <form action="">
                     <div class="formes">
                         <select name="" id="" v-model="cate">
-                            <option value="A louer">A louer</option>
-                            <option value="A vendre">A vendre</option>
+                            <option value="louer">louer</option>
+                            <option value="vendre">vendre</option>
                         </select>
                         <input type="file" @change="uploadImage" multiple>
                         <input type="text" placeholder="Nom  du bien" v-model="nom">

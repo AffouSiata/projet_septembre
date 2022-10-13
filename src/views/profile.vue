@@ -194,7 +194,7 @@ export default {
 }
 
 .wrapper .right{
-  width: 50%;
+  width: 70%;
   background: #fff;
   padding: 30px 15px;
   border-top-right-radius: 5px;

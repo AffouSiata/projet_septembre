@@ -14,12 +14,12 @@
                     <p>Veuillez Creér un <a href="/register">compte</a></p>
                     <div class="forme-input">
                         <i class="fas fa-envelope"></i>
-                        <input type="email" placeholder="Email" v-model="email">
+                        <input type="email" name="email" placeholder="Email" v-model="email">
                     </div>
                     <small v-if="v$.email.$error">{{v$.email.$errors[0].$message}}</small><br>
                     <div class="forme-input">
                         <i class="fas fa-unlock"></i>
-                        <input type="password" placeholder="Password" v-model="password">
+                        <input type="password" name="password" placeholder="Password" v-model="password">
                         <div class="password-icon">
                             <i class="fas fa-eye masque" @click="eyye"></i>
                             <i class="fas fa-eye-slash masque" @click="eyyeoff"></i>
@@ -140,12 +140,12 @@ export default {
 }
 
 .content{
-    position: absolute;
-    top: 20%;
-    left: 25%;
+    display: flex;
+    position: absolute; 
+    top: 20%; 
+    left: 25%; 
     height: 540px;
     width: 1000px;
-    display: flex;
     padding: 30px;
    
 }
@@ -191,7 +191,7 @@ form p{
 .forme-input{
     position: relative;
     background-color: rgb(94, 175, 202);
-    margin: 0px 30px 0px 0px;
+    margin: 0px 11px 0px 10px;
     border-top-left-radius:10px ;
     border-bottom-right-radius:10px ;
 }
@@ -265,14 +265,129 @@ small{
     font-weight: bold;
         
 }
+
+@media (max-width:1200px) {
+    .content{
+        width: 48%;
+    }
+    .images{
+        display: none;  
+    }
+}
+@media (max-width:1024px){
+    .entete i{
+        margin-left: 160px;
+        margin-top: -60px;
+    }
+}
 @media (max-width:800px) {
     .images{
         display: none;  
     }
     .content{
-        left:13%
+        left: 7%;
     }
 
 }
+@media (max-width:768px) {
+   .content{
+       width: 500px;
+       margin-left: 40px;
+   }
+
+}
+@media (max-width:414px){
+    .content{
+        width:45vh;
+        margin-left: -23px;
+    }
+    .formulaire{
+        width: 380px;
+    }
+    .forme-input{
+        display: flex;
+    }
+    .forme-input input{
+         width: 130px;
+        font-size: 16px;
+    }
+    .entete i{
+        margin-left: 123px;
+        margin-top: -60px;
+    }
+
+}
+@media (max-width:412px){
+    .content{
+        width:47vh;
+        margin-left: -20px;
+    }
+    .entete i{
+        margin-left: 123px;
+        margin-top: -60px;
+    }
+}
+@media (max-width:393px) {
+    .content{
+        width:48vh;
+        margin-left: -20px;
+    }
+    .formulaire{
+        width: 380px;
+    }
+    .forme-input{
+        display: flex;
+    }
+    .forme-input input{
+         width: 130px;
+        font-size: 16px;
+    }
+    .entete i{
+        margin-left: 105px;
+        margin-top: -60px;
+    }
+}
+@media (max-width:375px) {
+    .content{
+        width:45vh;
+        margin-left: -22px;
+    }
+    .formulaire{
+        width: 380px;
+    }
+    .forme-input{
+        display: flex;
+    }
+    .forme-input input{
+         width: 130px;
+        font-size: 16px;
+    }
+    .entete i{
+        margin-left: 105px;
+        margin-top: -60px;
+    }
+}
+@media (max-width:360px) {
+    .content{
+        width:48vh;
+        margin-left: -22px;
+    }
+    .formulaire{
+        width: 380px;
+    }
+    .forme-input{
+        display: flex;
+    }
+    .forme-input input{
+         width: 130px;
+        font-size: 16px;
+    }
+    .entete i{
+        margin-left: 90px;
+        margin-top: -60px;
+    }
+}
+
+
 
 </style>

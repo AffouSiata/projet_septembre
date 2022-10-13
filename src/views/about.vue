@@ -306,90 +306,7 @@ export default {
    
 
 
-    @media (max-width:1400px){
-        .ban2{
-            height:100vh
-        }
-        .ban22 img{
-            height: 470px;
-           
-        }
-    }
-    @media (max-width:1200px) {
-        .ban21 {
-            height: 1000px;
-            
-        }
-        .ban21 p{
-            margin-left: -135px;
-            width: 500px;
-        }
-        .ban21 h1{
-           /* text-align: center;
-           margin-right: 300px; */
-           float: left;
-        }
-        .icone{
-            margin-left: -120px
-        }
-        .ban21 .icone i{
-            font-size: 20px;
-        }
-        .ban21 .icone span{
-            font-size: 20px;
-        }
-        .about1{
-            margin-top: 30px;
-        }
-        
-    }
-    @media (max-width:888px) {
-        .ban2{
-            display: flex;
-            flex-direction: column;
-        } 
-        .ban21{
-            width: 95%;
-            height: 400px;
-            
-        }
-        .ban22{
-            width: 95%;
-            height: 400px;
-        }
-        .about{
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            
-        }
-        .ban22 img{
-            height: 400px;
-            margin-left: 70px;
-            margin-top: 80px;
-        }
-    }
-
-
-    @media (max-width:620px){
-        .logo{
-            margin-top: 50px;
-            font-size: 60px;
-            margin-bottom: -10px;
-        }
-        .logo span{
-            font-size: 80px; 
-        }
-        .sign{
-            margin-top: -1px; 
-        }
-        
-    }
-    @media (max-width:375px) {
-
-        
-    }
-
+  
 
     .ban3{
         margin-top: 30px;
@@ -468,29 +385,7 @@ export default {
         color: blueviolet;
     }
 
-    @media (max-width:900px) {
-
-    .ban3{
-        width: 100%;
-        height: 90vh;   
-
-    }
-    .about1{
-        margin-left: -210px;
-    }
-
-        .client{
-            display: flex;
-            flex-direction: column;
-            /* justify-content: center; */
-            margin-left: 180px;
-            margin-top: 30px;
-        }
-        .temoin{
-            margin-top: 20px;
-            margin-left: -100px;
-        }
-    }
+   
     .confiance{
         height: 80vh;
         width: 100%;
@@ -538,6 +433,92 @@ export default {
         height: 300px;
         background-color: black;
     }
+    @media (max-width:1400px){
+        .ban2{
+            height:100vh
+        }
+        .ban22 img{
+            height: 470px;
+           
+        }
+    }
+    @media (max-width:1200px) {
+        .ban21 {
+            height: 1000px;
+            
+        }
+        .ban21 p{
+            margin-left: -135px;
+            width: 500px;
+        }
+        .ban21 h1{
+           /* text-align: center;
+           margin-right: 300px; */
+           float: left;
+        }
+        .icone{
+            margin-left: -120px
+        }
+        .ban21 .icone i{
+            font-size: 20px;
+        }
+        .ban21 .icone span{
+            font-size: 20px;
+        }
+        .about1{
+            margin-top: 30px;
+        }
+        
+    }
+    @media (max-width:900px) {
+
+.ban3{
+    width: 100%;
+    height: 90vh;   
+
+}
+.about1{
+    margin-left: -210px;
+}
+
+    .client{
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        margin-left: 180px;
+        margin-top: 30px;
+    }
+    .temoin{
+        margin-top: 20px;
+        margin-left: -100px;
+    }
+}
+    @media (max-width:888px) {
+        .ban2{
+            display: flex;
+            flex-direction: column;
+        } 
+        .ban21{
+            width: 95%;
+            height: 400px;
+            
+        }
+        .ban22{
+            width: 95%;
+            height: 400px;
+        }
+        .about{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            
+        }
+        .ban22 img{
+            height: 400px;
+            margin-left: 70px;
+            margin-top: 80px;
+        }
+    }
     @media (max-width:888px) {
         .confiance{
             height: 140vh;
@@ -551,5 +532,50 @@ export default {
             margin: 0px 0px 20px 20px;
         }
     }
+
+
+    @media (max-width:620px){
+        .logo{
+            margin-top: 50px;
+            font-size: 60px;
+            margin-bottom: -10px;
+        }
+        .logo span{
+            font-size: 80px; 
+        }
+        .sign{
+            margin-top: -1px; 
+        }
+        
+    }
+    @media (max-width:600px){
+        .ban21 h1{
+            padding-top: 40px;
+        }
+        .about1{
+            display: flex;
+            justify-content: space-evenly;
+        }
+        .num{
+            font-size: 20px;
+        }
+        .num span{
+            font-size: 14px;
+        }
+        .ban22 img{
+            height: 300px;
+        }
+        .confiance{
+            height: 100vh;
+        }
+
+    }
+    
+    @media (max-width:375px) {
+
+        
+    }
+
+   
 
 </style>

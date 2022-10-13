@@ -2,6 +2,7 @@
     <div class="location">
         <navbarComponent/>
     </div>
+    
     <div class="contenu">
         <div class="element" ref="ss">
              <div class="villa" v-for="doc in local" :key="doc.id">
@@ -28,11 +29,34 @@
              </div>
         </div>
     </div>
+    <!-- <nav aria-label="Page navigation example">
+		<ul class="pagination">
+				<li class="page-item">
+					<button type="button" class="page-link" v-if="page != 1" @click="page--"> Previous </button>
+                    
+				</li>
+				<li class="page-item">
+					<button type="button" class="page-link" v-for="pageNumber in pages.slice(page-1, page+4)" :key="pageNumber"  @click="page = pageNumber"> {{pageNumber}} </button>
+				</li>
+				<li class="page-item">
+					<button type="button" @click="page++" v-if="page < pages.length" class="page-link"> Next </button>
+				</li>
+		</ul>
+	</nav>	 -->
+
+
+
     <div class="pagination">
-        <div class="precedent" >Prev</div>
+        <div class="precedent" :disabled="previous" >Prev</div>
         <div class="page">Page <span class="page-num"></span></div>
-        <div class="suivant">Next</div>
+        <div class="suivant" :disabled="nexxt">Next</div>
     </div>
+
+
+
+
+
+
    
     <footerComponent/>
 
@@ -54,14 +78,72 @@ import footerComponent from '../components/footer.vue'
      },
      data(){
          return{
-             local:[]
+            local:[],
+            current: 1,
+            paginate: 7,
+            paginate_total: 0,
+            search_filter: '',
+            status_filter: ''
+			// page: 1,
+			// perPage: 4,
+            // pages: []
+         
+            
          }
      },
     methods:{
         detailsplus(id){
-          console.log("nid",id);
+        //   console.log("nid",id);
           this.$router.replace(`/details/${id}`)
+        },
+        setPaginate: function (i) {
+            if (this.current == 1) {
+                return i < this.paginate;
+            }
+            else {
+                return (i >= (this.paginate * (this.current - 1)) && i < (this.current * this.paginate));
+            }
+        },
+        setStatus: function (status) {
+            this.status_filter = status;
+            this.$nextTick(function () {
+                this.updatePaginate();
+            });
+        },
+        updateCurrent: function (i) {
+            this.current = i;
+        },
+        updatePaginate: function () {
+            this.current = 1;
+            this.paginate_total = Math.ceil(document.querySelectorAll('.villa').length/this.paginate);
         }
+
+
+
+        // getLocal() {
+
+        //     console.log("mmmmm",this.local);
+        
+        //     let data = [];
+        //     for(let i = 0; i < this.local; i++){
+                
+        //         this.local.push();
+        //     }  
+		// },
+        // setPages() {
+		// 	let numberOfPages = Math.ceil(16 / this.perPage);
+		// 	for (let index = 1; index <= numberOfPages; index++) {
+		// 		this.pages.push(index);
+		// 	}
+		// },
+		// paginate(local) {
+		// 	let page = this.page;
+		// 	let perPage = this.perPage;
+		// 	let from = (page * perPage) - perPage;
+		// 	let to = (page * perPage);
+		// 	return local.slice(from, to);
+		// }
+
 
     },
     async mounted(){
@@ -74,15 +156,63 @@ import footerComponent from '../components/footer.vue'
                  let homedata = doc.data()
                  homedata.id = doc.id;
                  local.push(homedata);
-              console.log(doc.id, " => ", homedata);
+            //   console.log(doc.id, " => ", homedata);
+            
          });
          this.local = local;
-    },
+         this.setStatus()
+         this.updateCurrent()
+         this.updatePaginate()
 
+    },
+    created() {
+     this.paginate_total = this.local.length/this.paginate;
+   },
+    // computed: {
+	// 	displayedPosts () {
+	// 		return this.paginate(this.local);
+	// 	}
+	// },
+    // watch: {
+	// 	local () {
+	// 		this.setPages();
+	// 	}
+	// },
+    // created(){
+	// 	this.getLocal();
+	// },
+    // filters: {
+	// 	trimWords(value){
+	// 		return value.split(" ").slice(0,4).join(" ") + '...';
+	// 	}
+	// }
+   
  }
  </script>
  
  <style scoped>
+    
+    .precedent:disabled,
+    .precedent[disabled]{
+        background-color: blueviolet;
+        color: #fff;
+        cursor: not-allowed;
+        pointer-events: all !important;
+        border: none;
+    }
+
+button.page-link {
+	display: inline-block;
+}
+button.page-link {
+    font-size: 20px;
+    color: #29b3ed;
+    font-weight: 500;
+}
+.offset{
+  width: 500px !important;
+  margin: 20px auto;  
+}
    .location{
          width: 100%;
          height: 90px;
@@ -103,7 +233,8 @@ import footerComponent from '../components/footer.vue'
  .element{
  
  width: 70vw;
- height: 1000px;
+ /* height: 1900px; */
+ height: auto;
  display: grid;
  grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
  padding: 20px;
@@ -122,7 +253,7 @@ import footerComponent from '../components/footer.vue'
  border-width: 1px;
  border-style: solid;
  border-radius: 5px;
- height: 400px;
+ height: 420px;
  margin-right: 20px;
  }
  .villa:hover{
@@ -215,18 +346,26 @@ button:hover{
     display: flex;
     justify-content: center;
     margin-bottom: 30px;
+    width: 100%;
+   align-items: center;
 }
 .footer{
     bottom: 0;
 }
-.pagination{
+
+.precedent{
+    width: 62px;
+    height: 38px;
+    border: none;
+    background-color: blueviolet;
+    color: white;
+    border-radius: 5px;
     display: flex;
-    width: 100%;
-   /* border: 1px solid red; */
-   align-items: center;
     justify-content: center;
+    align-items: center;
+
 }
-.precedent,.suivant{
+.suivant{
     width: 62px;
     height: 38px;
     border: none;
@@ -253,6 +392,36 @@ button:hover{
 }
 .page{
     padding: 0 10px;
+}
+@media (max-width:1600px) {
+    .elment{
+        height: auto;
+    }
+}
+@media (max-width:1024px) {
+    .elment{
+        height: auto;
+    }
+}
+@media (max-width:768px) {
+    .botton{
+        text-align: center;
+    }
+}
+@media (max-width:375px) {
+    .villa{
+        margin-left: -10%;
+    }
+}
+@media (max-width:414px) {
+    .villa{
+        margin-left: -13%;
+    }
+}
+@media (max-width:320px) {
+    .villa{
+        margin-left: -20%;
+    }
 }
  
  </style>

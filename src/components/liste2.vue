@@ -76,7 +76,7 @@ import {addDoc, getDocs,getDoc,doc, deleteDoc} from "firebase/firestore"
 
 export default {
     name:"liste2Component",
-    props:[],
+    props:["search"],
     components:{
         modalComponent,
         modifieComponent
@@ -87,7 +87,8 @@ export default {
             mod:false,
             liste:[],
             id:"",
-            user:""
+            user:"",
+            autreliste1:[]
             
         }
     },
@@ -179,6 +180,7 @@ export default {
                     let listedata = doc.data()
                     listedata.id = doc.id;
                     liste.push(listedata);
+                    this.autreliste1.push(listedata)
                 // console.log(doc.id, " => ", doc.data());
             }) 
             this.liste = liste 
@@ -188,6 +190,19 @@ export default {
 
         this.$refs.tableau.scrollTop= this.$refs.tableau.scrollHeight
         this.$refs.tableau.scrollTo= (0,document.body.scrollHeight)
+    },
+    watch:{
+        search(){
+            let mm = this.search
+            let nn = Number(mm)
+            if (isNaN(nn)){
+                this.liste = this.autreliste1.filter(d=>d.nom.toLowerCase().includes(mm.toLowerCase()))
+                this.liste = this.autreliste1.filter(d=>d.ville.toLowerCase().includes(mm.toLowerCase()))
+                // this.liste = this.autreliste1.filter(d=>d.cate.toLowerCase().includes(mm.toLowerCase()))
+                return
+            }
+            this.liste = this.autreliste1.filter(d=>String(d.prix).includes(mm))
+        }
     }
 
 }

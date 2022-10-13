@@ -91,10 +91,12 @@ export default {
         padding-top: 80px;      
     }
     .contact1 a{
+       
         padding-top: 80px;  
         color: #fff;
         font-size: 22px;
         font-weight: bold;
+        
     }
     .contact1 a:hover{
         color: blueviolet;
@@ -219,14 +221,15 @@ export default {
     .footer{
         margin-top: 20px;
         width: 100%;
-        height: 300px;
+        height: auto;
         background-color: black;
+        bottom: 0;
     }
-    @media (max-width:728px) {
+    @media (max-width:1200px) {
         .contact2{
             display: flex;
             flex-direction: column;
-            height: 100vh;
+            height: auto;
            
         }
         .partie1{
@@ -242,15 +245,183 @@ export default {
         }
         .part1,.part3{
             width: 90%;
+            margin-left: 40px;
         }
         .part3{
-            margin-left: -1px;
+            margin-left: 40px;
         }
         .partie2{
             width: 95%;
             height: 600px;
             margin: 15px;
         }
+        .formes input{
+            width: 650px;
+        }
+        .forme input{
+            width: 650px;
+        }
+        .forme textarea{
+            width: 650px;
+        }
+        .botton{
+            text-align: center;
+        }
+        
+        .botton button{
+            width: 280px;
+            margin-top: -2%;
+        }
+    }
+    @media (max-width:768px) {
+        .contact2{
+            display: flex;
+            flex-direction: column;
+            height: auto;
+           
+        }
+        .partie1{
+            width: 95%;
+            height: 900px;
+            margin: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+        .part2{
+            display: flex;
+            flex-direction: column; 
+        }
+        .part1,.part3{
+            width: 90%;
+            margin-left: 40px;
+        }
+        .part3{
+            margin-left: 40px;
+        }
+        .partie2{
+            width: 95%;
+            height: 600px;
+            margin: 15px;
+        }
+        .formes input{
+            width: 550px;
+        }
+        .forme input{
+            width: 550px;
+        }
+        .forme textarea{
+            width: 550px;
+        }
+        .botton{
+            text-align: center;
+        }
+        
+        .botton button{
+            width: 280px;
+            margin-top: -2%;
+        }
         
     }
+    @media (max-width:600px){
+        .contact2{
+        height: auto;
+        /* margin-bottom: 100px; */
+        }
+        .formes input{
+            width: 380px;
+        }
+        .forme input{
+            width: 380px;
+        }
+        .forme textarea{
+            width: 380px;
+        }
+        .botton{
+            text-align: center;
+        }
+        
+        .botton button{
+            width: 280px;
+            margin-top: -2%;
+        }
+
+
+    }
+    
+    @media (max-width:414px){
+        .contact2{
+        height: auto;
+        /* margin-bottom: 100px; */
+        }
+        .formes input{
+            width: 360px;
+        }
+        .forme input{
+            width: 360px;
+        }
+        .forme textarea{
+            width: 360px;
+        }
+        .botton{
+            text-align: center;
+        }
+        
+        .botton button{
+            width: 280px;
+            margin-top: -2%;
+        }
+
+    }
+    @media (max-width:375px){
+        .contact2{
+        height: auto;
+        /* margin-bottom: 100px; */
+        }
+        .formes input{
+            width: 280px;
+        }
+        .forme input{
+            width: 280px;
+        }
+        .forme textarea{
+            width: 280px;
+        }
+        .botton{
+            text-align: center;
+        }
+        
+        .botton button{
+            width: 280px;
+            margin-top: -2%;
+        }
+
+    }
+    @media (max-width:320px){
+        .contact2{
+        height: auto;
+        /* margin-bottom: 100px; */
+        }
+        .formes input{
+            width: 280px;
+        }
+        .forme input{
+            width:280px;
+        }
+        .forme textarea{
+            width:280px;
+        }
+        .botton{
+            text-align: center;
+        }
+        
+        .botton button{
+            width: 280px;
+            margin-top: -2%;
+        }
+        .part3{
+            margin-left: 10px;
+        }
+
+    }
+    
 </style>

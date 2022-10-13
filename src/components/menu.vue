@@ -60,10 +60,9 @@
 import {homeColRefs} from '../firebase' 
 import {getDocs,doc, deleteDoc} from "firebase/firestore"
 export default {
-    name:"liste1Component",
+    name:"menuComponent",
     component:{
     },
-    props:["search"],
     data(){
         return{
             mesliste:[],

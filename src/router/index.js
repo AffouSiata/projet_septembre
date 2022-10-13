@@ -12,6 +12,7 @@ import profile from '../views/profile.vue'
 import modifie from '../views/modifie.vue'
 import essaie from '../views/essaie.vue'
 import modalsup from '../views/modalSup.vue'
+import error from "@/views/error.vue"
 const routes = [
   {
     path: '/admin',
@@ -82,6 +83,14 @@ const routes = [
     component: essaie,
     props:true
   },
+  {
+    path:'/error',
+    name:'error',
+    component:error
+  },
+  {
+    path:"/:pathMatch(.*)*",component:error
+  }
   
   
 ]

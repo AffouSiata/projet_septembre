@@ -38,19 +38,15 @@ export default {
     }
     .services{
         display: flex; 
-        justify-content: center; 
-        align-items: 100vh;
-        min-height: 40vh;
-        
+        flex-direction: row;
     }
     .container{
         width: 100vw;
-        display: grid;  
-        grid-template-columns: repeat(auto-fit,minmax(320px,1fr)); 
-        grid-gap: 20px;
+        display: flex;  
         padding: 20px; 
     }
     .service1{
+        margin-right: 20px;
         width:600px;
         height: 400px;
         padding: 2rem 1rem; 
@@ -113,6 +109,57 @@ export default {
         box-shadow: 0 7px 10px rgba(0,0,0,0.5);
         color: blueviolet;
     }
+    @media (max-width:1100px){
+        .service1{
+            width:460px;
+            height: 400px;
+            
+        }
+        .service1 .info a{
+            margin-left: 100%;
+        }
+    }
+    @media (max-width:768px) {
+        .container{
+            display: flex;
+            flex-direction: column;
+        }
+        .service1{
+            width: 100%;
+            margin-top: 30px;
+        }
+        .service1 .info a{
+            margin-left: 140%;
+        }
+        
+        .element{
+            height: auto;
+            margin-top: -20px;
+            
+        }
+       .villa{
+           height: 360px;
+       }    
+  
+    }
+    @media (max-width:375px){
+        .service1 .info a{
+            margin-left: 40%;
+        }
+    }
+    @media (max-width:414px){
+        .service1 .info a{
+            margin-left: 40%;
+        }
+    }
+    @media (max-width:320px){
+        .service1{
+            height: 200px;
+            
+        }
+    }
+    
+  
 
 
 

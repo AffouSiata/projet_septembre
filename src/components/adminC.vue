@@ -10,7 +10,7 @@
                 <li>
                     <a href="#">
                         <i class='bx bx-grid-alt' ></i>
-                        <span class="links_name">Menu Admin</span>
+                        <span class="links_name" @click="menuliste">Menu Admin</span>
                     </a>
                 </li>
                 <li>
@@ -46,7 +46,7 @@
                     <!-- <span class="dashboard">Dashboard</span> -->
                 </div>
                 <div class="search-box">
-                    <input type="text" placeholder="Search...">
+                    <input type="text" placeholder="Search..." v-model="search">
                     <i class='bx bx-search' ></i>
                 </div>
                 <div class="profile-details">
@@ -57,7 +57,8 @@
             </nav>
             <div class="content-home">
                 <liste1Component v-if="mesliste === 'liste1Component'"/>
-                <liste2Component v-if="mesliste === 'liste2Component'"/>
+                <liste2Component v-if="mesliste === 'liste2Component'" :search="search"/>
+                <menuComponent v-if="mesliste === 'menuComponent'"/>
             </div>
 
             
@@ -68,9 +69,12 @@
 </template>
 
 <script>
+
 import liste1Component from '../components/liste1.vue'
 import liste2Component from '../components/liste2.vue'
+import menuComponent from '../components/menu.vue'
 import {auth} from '../firebase';
+import {homeColRefs} from '../firebase' 
 
 
 
@@ -78,14 +82,20 @@ import {auth} from '../firebase';
         name:" adminComponent",
         components:{
             liste1Component,
-            liste2Component
+            liste2Component,
+            menuComponent
         },
+
         data(){
             return{
-                mesliste:''
+              search:"",
+              searche:"",
+              mesliste:'',
+              liste:''
             }
         },
         methods:{
+         
             sidebarre(){
                 let sidebar = document.querySelector(".sidebar");
                 let sidebarBtn = document.querySelector(".sidebarBtn");
@@ -103,14 +113,12 @@ import {auth} from '../firebase';
                 .catch((err) =>{
                     console.log(err);
                 });
-            }
+            },
+           
 
+      },
 
-
-        }
-        
-
-    }
+  }
 
 </script>
 
@@ -118,15 +126,15 @@ import {auth} from '../firebase';
 
 
 
-  .sidebar{
-  position: fixed;
-  height: 100vh;
-  width: 240px;
-  background: blueviolet;
-  transition: all 0.5s ease;
+.sidebar{
+    position: fixed;
+    height: 100vh;
+    width: 240px;
+    background: blueviolet;
+    transition: all 0.5s ease;
 }
 .sidebar.active{
-  width: 80px;
+  width: 50px;
 }
 .sidebar .logo-details{
   height: 80px;
@@ -292,9 +300,9 @@ nav .profile-details i{
   position: relative;
   padding-top: 104px;
 }
-@media (max-width: 1240px) {
+@media (max-width: 1300px){
     .sidebar{
-      width: 60px;
+      width: 50px;
     }
     .sidebar.active{
       width: 220px;
@@ -307,6 +315,34 @@ nav .profile-details i{
       /* width: calc(100% - 220px); */
       overflow: hidden;
       left: 220px;
+    }
+    .home-section nav{
+      width: calc(100% - 60px);
+      left: 60px;
+    }
+    .sidebar.active ~ .home-section nav{
+      width: calc(100% - 220px);
+      left: 220px;
+    }
+
+}
+@media (max-width: 1240px) {
+    .sidebar{
+      width: 50px;
+      height: 100%;
+    }
+    .sidebar.active{
+      width: 220px;
+    }
+    .home-section{
+      width: calc(100% - 60px);
+      left: 60px;
+    }
+    .sidebar.active ~ .home-section{
+      /* width: calc(100% - 220px); */
+      overflow: hidden;
+      left: 220px;
+      height: 100%;
     }
     .home-section nav{
       width: calc(100% - 60px);

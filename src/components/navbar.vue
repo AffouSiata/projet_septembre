@@ -8,7 +8,7 @@
                 <ul class="nav-menu">
                     <li><router-link to="/">Home</router-link></li>
                     <li><router-link to="/about">About</router-link></li>
-                    <li><router-link to="/services">Services</router-link></li>
+                    <!-- <li><router-link to="/services">Services</router-link></li> -->
                     <li><router-link to="/contact">Contact</router-link></li>
                 </ul>
             </nav>
@@ -65,10 +65,10 @@ export default {
     mounted(){
         const authhe = getAuth();
             onAuthStateChanged(authhe, (user) => {
-                console.log("dcfdfd",user);
+                // console.log("dcfdfd",user);
             if (user) {
                 const uid = user.uid;
-                console.log("sss",uid );
+                // console.log("sss",uid );
                 this.connecte= true
             } else {
               
@@ -205,10 +205,12 @@ nav ul li{
     font-size: 20px;
     border-bottom:3px solid transparent;
     transition: 0.4s ;
+    
 }
 nav ul li a{
+    padding: 10px;
     color: #fff;
-      text-decoration: none;
+    text-decoration: none;
 }
 nav ul li a.active{
     padding: 10px;
@@ -217,7 +219,6 @@ nav ul li a.active{
     border-radius: 10px; 
 }
 nav ul li a:hover{
-    padding: 10px;
     background-color: blueviolet;
     border-bottom-left-radius: white;
     border-radius: 10px;
@@ -330,6 +331,12 @@ nav ul li a:hover{
         top: 0; 
     }
      
+    
+}
+@media (max-width:375px){
+    .contener{
+        width: 100%;
+    }
     
 }
 
