@@ -137,26 +137,26 @@
                 </div>
               </div>
             </div>  -->
+
             
-            
-             <div class="villa" >
+             <div class="villa" v-for="doc in snape" :key="doc.id">
               <div class="villa1">
-                <img src="../assets/maison1.jpg" alt="">
-                <div class="col_rent">For Sale</div> 
-                <div class="price">112345 FCFA</div>
+                <img :src="doc.images" alt="">
+                <div class="col_rent">{{doc.cate}}</div> 
+                <div class="price">{{doc.prix}}FCFA</div>
               </div>
               <div class="villa2">
-                <h2>Apppartement</h2>
-                <p>sgvhdfhdfhudhiufhiduhgudhjbfghujdhiufvdhujfvhjdhfudhfhu</p>
+                <h2>{{doc.nom}}</h2>
+                <p>{{}}</p>
                 <div class="villa21">
-                  <i class="fa fa-bed"><span> Bed:7</span></i>
-                  <i class="fa fa-shower"><span> Bath: 7 </span></i>
-                  <i class="fa fa-th"><span>123456 SF </span></i>
+                  <i class="fa fa-bed"><span> Bed:{{doc.bain}}</span></i>
+                  <i class="fa fa-shower"><span> Bath: {{doc.chambre}} </span></i>
+                  <i class="fa fa-th"><span>{{doc.superficie}} SF </span></i>
                                 
                 </div>
               </div>
             </div>  
-             <div class="villa" >
+             <!-- <div class="villa" >
               <div class="villa1">
                 <img src="../assets/maison1.jpg" alt="">
                 <div class="col_rent">For Sale</div> 
@@ -172,8 +172,8 @@
                                 
                 </div>
               </div>
-            </div>   
-            <div class="villa" >
+            </div>    -->
+            <!-- <div class="villa" >
               <div class="villa1">
                 <img src="../assets/maison1.jpg" alt="">
                 <div class="col_rent">For Sale</div> 
@@ -189,7 +189,7 @@
                                 
                 </div>
               </div>
-            </div>       
+            </div>        -->
           </div>
         </div>
         <footerComponent/>
@@ -233,7 +233,7 @@ import footerComponent from '../components/footer.vue'
         }
 
 
-        const q = query(homeColRef, where("ville", "==", "abidjan"));
+        const q = query(homeColRef, where("ville", "==",this.homedocSnap.ville));
              console.log("ddddd",q);
              const snapSnapshot = await getDocs(q);
              let snape = [];
@@ -245,6 +245,7 @@ import footerComponent from '../components/footer.vue'
              console.log("pppppppp",doc.id, " => ", homesnapedata);
         });
         this.snape = snape;
+        console.log("azerty",snape);
        
 
     },
@@ -303,13 +304,14 @@ import footerComponent from '../components/footer.vue'
  .detail{
    margin-top: 30px;
    width: 100%;
-   height: 520px;
+   height: auto;
    display: flex;
    justify-content: center;
  }
  .detail1{
   width: 34%;
-  height: 400px;
+  /* height: 400px; */
+  height: auto;
   border:1px solid rgb(187, 30, 155);
   margin: 50px 0 0 0px;
  }
@@ -422,7 +424,7 @@ import footerComponent from '../components/footer.vue'
   }
  .autre-associe{
    width: 100%;
-   height: 60vh;
+   height: auto;
    display: flex;
     justify-content: center;
     flex-direction: column;
@@ -662,6 +664,9 @@ import footerComponent from '../components/footer.vue'
     }
     .carousel{
       position: relative;
+    }
+    footer{
+      bottom:0;
     }
     
 </style>
