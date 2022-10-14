@@ -312,7 +312,7 @@ import footerComponent from '../components/footer.vue'
   width: 34%;
   /* height: 400px; */
   height: auto;
-  border:1px solid rgb(187, 30, 155);
+  border:1px solid blueviolet;
   margin: 50px 0 0 0px;
  }
 
@@ -335,7 +335,7 @@ import footerComponent from '../components/footer.vue'
  width: 200px;
  font-size: 20px;
  font-weight: bold;
- padding: 0 20px 0 20px;
+ padding: 0 10px 0 10px;
   
  }
  .titre2 small{
@@ -423,6 +423,7 @@ import footerComponent from '../components/footer.vue'
     width: 50%;
   }
  .autre-associe{
+   
    width: 100%;
    height: auto;
    display: flex;
@@ -432,12 +433,14 @@ import footerComponent from '../components/footer.vue'
     /* margin-top: -20%; */
  }
  h1{
+  margin-top: -76px;
    padding-top: 50px;
    text-transform: uppercase;
+   margin-top: -141px;
  }
  .element{
         width: 70vw;
-        height: 1000px;
+        height: auto;
         display: grid;
         grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
         padding: 20px;
@@ -456,7 +459,6 @@ import footerComponent from '../components/footer.vue'
         border-width: 1px;
         border-style: solid;
         border-radius: 5px;
-        height: 430px;
         margin-right: 20px;
     }
     .villa:hover{
@@ -628,7 +630,7 @@ import footerComponent from '../components/footer.vue'
         justify-content: center;
         align-items: center;
         margin-left: 700px;
-        margin-top: -120px;
+        /* margin-top: -120px; */
     }
     .part1,.part2{
         width: 300px;
@@ -667,6 +669,158 @@ import footerComponent from '../components/footer.vue'
     }
     footer{
       bottom:0;
+    }
+    @media (max-width:1024px){
+      .des{
+        height:60vh
+      }
+      .des1{
+        width: 100%;
+      }
+      .des1 img{
+        width: 100%;
+        margin-top: -127px;
+        border-radius: 20px;
+        padding: 10px;
+        object-fit: cover;
+      }
+      .des2{
+        width: 100%;
+      }
+      .carre{
+        width: 370px;
+        height: 200px;
+        margin-top: -53px;
+
+      }
+      .carre img{
+        border-radius:10px;
+        margin-left:30px;
+      }
+      .detail{
+        display: flex;
+        flex-direction: column;
+      }
+      .detail1{
+        width: 94%;
+        border:2px solid rgb(187, 30, 155);
+        margin: 30px;
+      }
+      .titre1{
+        width: 350px;
+
+      }
+      .titre2 small{
+        font-size: 23px;
+      }
+      .titre3{
+        width: 350px;
+
+      }
+      .detail2{
+        width: 94%;
+        border:2px solid rgb(187, 30, 155);
+        margin: 30px;
+      }
+      .montitre1{
+        width: 350px;
+
+      }
+      .montitre2 small{
+        font-size: 23px;
+      }
+      .montitre3{
+        width: 350px;
+
+      }
+      .clan{
+        margin-top:40Px;
+        display: flex;
+        flex-direction: column
+      }
+      .clan1{
+        position: relative;
+        width: 100%;
+        height: 100vh;
+     
+      }
+      .autre-associe{
+        margin-top: 30px;
+      }
+    h1{
+      margin-top: -76px;
+    }
+    .clane{
+      margin-left: 20px;
+    }
+    .appel-direct{
+      display:flex;
+      flex-direction: column;
+      margin-right: 20px;
+    }
+      
+    }
+    @media (max-width:768px){
+      .des{
+        height:70vh;
+      }
+      .des img{
+        margin-top: 4px;
+      }
+      .carre img{
+        width: 328px;
+        height:200px;
+        margin-top: 79px;
+      }
+      .titre2 small{
+        font-size: 18px;
+      }
+      .montitre2 small{
+        font-size: 18px;
+      }
+      .fiche{
+        margin-top: -20px;
+      }
+      .clan1{
+        height: auto;
+        display:flex;
+        flex-direction: column;
+      }
+      h1{
+        margin-top: 27px;
+        font-size: 30px;
+      }
+      /* .clane{
+        width: 100%;
+      } */
+    }
+    @media (max-width:600px) {
+      .des{
+        height:90vh;
+      }
+      .des img{
+        margin-top: 2px;
+      }
+      .carre img{
+        height: 180px;
+        width: 255px;
+        margin-top: 75px;
+      }
+      h1{
+        margin-top: 127px;
+        font-size: 21px;
+        
+      }
+    }
+    @media (max-width:375px){
+      .carre{
+        display: flex;
+      }
+      .carre img{
+        /* height: 180px;
+        width: 255px;
+        margin-top: 75px; */
+      }
     }
     
 </style>
